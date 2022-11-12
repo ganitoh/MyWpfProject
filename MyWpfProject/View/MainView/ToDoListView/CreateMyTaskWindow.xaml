@@ -1,0 +1,26 @@
+﻿<Window x:Class="MyWpfProject.View.MainView.ToDoListView.CreateMyTaskWindow"
+          xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Height="556" Width="718"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        WindowStartupLocation="CenterScreen"
+        >
+    <Grid Background="LightGray" >
+        <Border Margin="20" Background="white" CornerRadius="20" >
+            <Border.Effect>
+                <DropShadowEffect  BlurRadius="30" Color="LightGray" ShadowDepth="0"/>
+            </Border.Effect>
+            <StackPanel Margin="10">
+                <TextBlock  Text="Добавить задачу" FontSize="30" FontWeight="Bold" TextAlignment="Center"  />
+                <TextBox x:Name="titleTextBox" Margin="50 20 50 0" materialDesign:HintAssist.Hint="заголовок" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                <TextBox x:Name="descriptionTextBox" Margin="50 20 50 0" materialDesign:HintAssist.Hint="описание" MaxLines="3" AcceptsReturn="True"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                <TextBlock  Text="выбирете предворительную дату завершения " FontSize="12" TextAlignment="Left" Margin="50 40 0 0"  />
+                <DatePicker x:Name="deadLine" Margin="50 10 430 0"/>
+                <Button Margin="0 150 50 0" HorizontalAlignment="Right" Width="200" Content="добавить" Click="AddMyTask" />
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

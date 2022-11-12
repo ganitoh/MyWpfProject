@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="MyWpfProject.View.MainView.ProfileView.UserPhotoControl" 
+             xmlns:local="clr-namespace:MyWpfProject.View.MainView.ProfileView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="50" d:DesignWidth="50">
+    <Grid>
+        <Border CornerRadius="100">
+            <Border.Background>
+                <ImageBrush x:Name="photo" Stretch="Fill" />
+            </Border.Background>
+        </Border>
+    </Grid>
+</UserControl>

@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="MyWpfProject.View.MainView.ProfileView.ButtonAddPhotoControl" 
+             xmlns:local="clr-namespace:MyWpfProject.View.MainView.ProfileView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="170" d:DesignWidth="170">
+    <Grid>
+        <ContentControl x:Name="addPhoto">
+            <Border  x:Name="border" Background="LightGray" Margin="10" Height="150" HorizontalAlignment="Left" Width="150" CornerRadius="100">
+                <Button Margin="25" Height="37" Click="AddPhotoButton" >
+                    <TextBlock  Margin="0" Text="добавить фотографию" FontSize="11"  TextAlignment="Center" TextWrapping="Wrap" Width="70"/>
+                </Button>
+            </Border>
+        </ContentControl>
+
+    </Grid>
+</UserControl>
