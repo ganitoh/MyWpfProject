@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\App.xaml
-17-238330901
+1732232670
 
-26477683500
+26-308410415
 161033256165
-View\AuthorizationView\AuthorizationWindow.xaml;View\MainView\MainWindow.xaml;View\MainView\MyFinanceView\MyFinanceControl.xaml;View\MainView\ProfileEditorView\ChangePasswordControl.xaml;View\MainView\ProfileEditorView\ChangePasswordWindow.xaml;View\MainView\ProfileEditorView\SettingsProfileWindow.xaml;View\MainView\ProfileView\ButtonAddPhotoControl.xaml;View\MainView\ProfileView\MyTaskControl.xaml;View\MainView\ProfileView\ProfileControl.xaml;View\MainView\ProfileView\UserPhotoControl.xaml;View\MainView\ToDoListView\CreateMyTaskWindow.xaml;View\MainView\ToDoListView\EditMyTaskWindow.xaml;View\MainView\ToDoListView\MyTaskControl.xaml;View\MainView\ToDoListView\ToDoListControl.xaml;View\RegistrationView\FirstPageRegistration.xaml;View\RegistrationView\RegistrationWindow.xaml;View\RegistrationView\SecondPageRegistration.xaml;
+View\AuthorizationView\AuthorizationWindow.xaml;MainWindow.xaml;View\MainView\MyFinanceView\MyFinanceControl.xaml;View\MainView\ProfileEditorView\ChangePasswordControl.xaml;View\MainView\ProfileEditorView\ChangePasswordWindow.xaml;View\MainView\ProfileEditorView\SettingsProfileWindow.xaml;View\MainView\ProfileView\ButtonAddPhotoControl.xaml;View\MainView\ProfileView\MyTaskControl.xaml;View\MainView\ProfileView\ProfileControl.xaml;View\MainView\ProfileView\UserPhotoControl.xaml;View\MainView\ToDoListView\CreateMyTaskWindow.xaml;View\MainView\ToDoListView\EditMyTaskWindow.xaml;View\MainView\ToDoListView\MyTaskControl.xaml;View\MainView\ToDoListView\ToDoListControl.xaml;View\RegistrationView\FirstPageRegistration.xaml;View\RegistrationView\RegistrationWindow.xaml;View\RegistrationView\SecondPageRegistration.xaml;
 
 True
 

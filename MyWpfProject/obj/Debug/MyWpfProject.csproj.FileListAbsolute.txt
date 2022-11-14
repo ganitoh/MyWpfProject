@@ -53,3 +53,5 @@ C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\MainVi
 C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\RegistrationView\FirstPageRegistration.baml
 C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\RegistrationView\RegistrationWindow.baml
 C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\RegistrationView\SecondPageRegistration.baml
+C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\App.g.cs
+C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\obj\Debug\MainWindow.g.cs
