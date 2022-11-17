@@ -44,7 +44,7 @@ namespace MyWpfProject.View.RegistrationView
                         MessageBox.Show("произошла ошибка");
                 }
                 else
-                    MessageBox.Show("данный логин уже занят");
+                    MessageBox.Show(" логин уже занят");
             }
         }
         private bool IsLoginUniqueCheck()
@@ -58,10 +58,10 @@ namespace MyWpfProject.View.RegistrationView
             selectAdapter.Fill(table);
 
             if (table.Rows.Count > 0)
-                return true;
+                return false;
 
             else
-                return false;
+                return true;
         }
         private bool IsAllLinesCorrectAndShowNotificationtoTheUsers()
         {

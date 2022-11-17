@@ -8,7 +8,7 @@
              d:DesignHeight="170" d:DesignWidth="170">
     <Grid>
         <ContentControl x:Name="addPhoto">
-            <Border  x:Name="border" Background="LightGray" Margin="10" Height="150" HorizontalAlignment="Left" Width="150" CornerRadius="100">
+            <Border  x:Name="border" Background="#3d2751" Margin="10" Height="150" HorizontalAlignment="Left" Width="150" CornerRadius="100">
                 <Button Margin="25" Height="37" Click="AddPhotoButton" >
                     <TextBlock  Margin="0" Text="добавить фотографию" FontSize="11"  TextAlignment="Center" TextWrapping="Wrap" Width="70"/>
                 </Button>

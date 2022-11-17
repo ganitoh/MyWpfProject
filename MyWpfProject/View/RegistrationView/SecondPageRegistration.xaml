@@ -5,23 +5,19 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Приложение для пользователей" Height="500" Width="800"
+        Title="Приложение для пользователей" Height="460" Width="800"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         >
-    <Grid Background="#ffdadada">
-        <Border MinWidth="400" Margin="15,0,15,0" Background="White" VerticalAlignment="Center" Padding="50" MaxWidth="550" CornerRadius="20">
-            <Border.Effect>
-                <DropShadowEffect  BlurRadius="30" Color="LightGray" ShadowDepth="0"/>
-            </Border.Effect>
+    <Grid Background="#1b191c">
+        <Border   Background="#333333" VerticalAlignment="Top" Padding="50" MaxWidth="550" CornerRadius="20" Height="350">
             <StackPanel  x:Name="meinPanel">
-                <TextBlock  Text="Регистрация" FontSize="30" FontWeight="Bold" TextAlignment="Center" Margin="0 0 0 0" />
-                <TextBox x:Name="emailTextBox" Margin="0 20 0 0" materialDesign:HintAssist.Hint="email" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                <TextBox x:Name="loginTextBox" Margin="0" materialDesign:HintAssist.Hint="login" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                <PasswordBox x:Name="passwordBox"  Margin="0"  materialDesign:HintAssist.Hint=" пароль" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
-                <PasswordBox x:Name="repeadPasswordBox"  Margin="0"  materialDesign:HintAssist.Hint=" пароль" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
+                <TextBlock  Text="Регистрация" FontSize="30" FontWeight="Bold" TextAlignment="Center" Margin="0 0 0 0" Foreground="white" />
+                <TextBox x:Name="emailTextBox" Margin="0 20 0 0" materialDesign:HintAssist.Hint="email" Foreground="white" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                <TextBox x:Name="loginTextBox" Margin="0" materialDesign:HintAssist.Hint="login" Foreground="white" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                <PasswordBox x:Name="passwordBox"  Margin="0"  materialDesign:HintAssist.Hint="пароль" Foreground="white" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
+                <PasswordBox x:Name="repeadPasswordBox"  Margin="0"  materialDesign:HintAssist.Hint="павторите пароль" Foreground="white" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
                 <Button Content="зарегистрироваться" Margin="250 10 10 10" FontSize="14" Click="AddUserToDataBase"  />
             </StackPanel>
-
         </Border>
     </Grid>
 </Page>

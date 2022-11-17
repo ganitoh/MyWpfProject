@@ -16,16 +16,13 @@
             <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
                 <Button BorderThickness="0"   VerticalAlignment="Top" HorizontalAlignment="Right" Margin="5" Height="25" Width="25" Click="CollapseWindow" Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" >
                     <Image Source="/images/7148710_minus_remove_delete_trash_collapse_icon.png" Margin="3" />
-
                 </Button>
-
                 <Button BorderThickness="0"   VerticalAlignment="Top" HorizontalAlignment="Right" Margin="5" Height="25" Width="25" Click="CloseWindow" Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" >
                     <Image Source="/images/4879885_close_cross_delete_remove_icon.png" Margin="3" />
                 </Button>
             </StackPanel>
         </Grid>
         <Border MinWidth="400" Margin="15,0,15,0" Background="#333333" VerticalAlignment="Center" Padding="50" MaxWidth="550" CornerRadius="20">
-
             <StackPanel x:Name="meinPanel">
                 <TextBlock Text="Добро Пожаловать!" FontSize="30" FontWeight="Bold" Foreground="White"  TextAlignment="Center" Margin="0 0 0 20" />
                 <Grid Margin="0 20 0 20" >

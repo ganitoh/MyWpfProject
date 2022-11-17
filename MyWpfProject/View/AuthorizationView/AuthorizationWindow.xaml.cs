@@ -24,7 +24,7 @@ namespace MyWpfProject.View.AuthorizationView
         {
             if (Mouse.LeftButton == MouseButtonState.Pressed)
             {
-                AuthorizationWindow._AuthorizationWindow.DragMove();
+                _AuthorizationWindow.DragMove();
             }
         }
         private void AnimationButton()

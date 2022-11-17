@@ -19,7 +19,6 @@ C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\obj\Debug\MyWpfProjec
 C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\obj\Debug\MyWpfProject.csproj.CopyComplete
 C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\obj\Debug\MyWpfProject.exe
 C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\obj\Debug\MyWpfProject.pdb
-C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\MainView\MainWindow.g.cs
 C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\MainView\ToDoListView\CreateMyTaskWindow.baml
 C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\AuthorizationView\AuthorizationWindow.g.cs
 C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\MainView\MyFinanceView\MyFinanceControl.g.cs
@@ -38,7 +37,6 @@ C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\Regist
 C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\RegistrationView\RegistrationWindow.g.cs
 C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\RegistrationView\SecondPageRegistration.g.cs
 C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\AuthorizationView\AuthorizationWindow.baml
-C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\MainView\MainWindow.baml
 C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\MainView\MyFinanceView\MyFinanceControl.baml
 C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\MainView\ProfileEditorView\ChangePasswordControl.baml
 C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\MainView\ProfileEditorView\ChangePasswordWindow.baml
@@ -53,5 +51,5 @@ C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\MainVi
 C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\RegistrationView\FirstPageRegistration.baml
 C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\RegistrationView\RegistrationWindow.baml
 C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\RegistrationView\SecondPageRegistration.baml
-C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\App.g.cs
-C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\obj\Debug\MainWindow.g.cs
+C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\MainView\MainWindow.g.cs
+C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\MainView\MainWindow.baml

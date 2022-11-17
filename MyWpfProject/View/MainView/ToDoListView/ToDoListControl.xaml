@@ -6,14 +6,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="LightGray" >
-        <Border Margin="10" Background="white" CornerRadius="20">
+    <Grid Background="#1b191c" >
+        <Border Margin="10" Background="#333333" CornerRadius="20">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="70"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <Border  Grid.Row="0"  Background="#b7b5fb" CornerRadius="20 20 0 0" Margin="0 0 0 5">
+                <Border  Grid.Row="0"  Background="#FF673AB7" CornerRadius="20 20 0 0" Margin="0 0 0 5">
                     <StackPanel Margin="10" Orientation="Horizontal">
                         <Button Content="Добавить" Margin="0" Click="AddMyTask"/>
                     </StackPanel>
