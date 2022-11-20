@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="MyWpfProject.View.MainView.Sidebar.SidebarControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MyWpfProject.View.MainView.Sidebar"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="300">
+    <Grid>
+        <Border CornerRadius="0 20 20 0" Background="white">
+            <Border Margin="2" CornerRadius="0 20 20 0" Background="#333333">
+                <StackPanel Orientation="Vertical" >
+                    <TextBlock Text="Меню" Foreground="white" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" Margin="10"/>
+                </StackPanel>
+            </Border>
+        </Border>    
+    </Grid>
+</UserControl>

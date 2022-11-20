@@ -2,17 +2,19 @@
 using System;
 using System.Data.SqlClient;
 using System.Windows;
+using System.Windows.Input;
 
 namespace MyWpfProject.View.MainView.ToDoListView
 {
     public partial class EditMyTaskWindow : Window
     {
-
+        public static EditMyTaskWindow EditMyTaskW { get; set; }
         MyTask myTask;
         public EditMyTaskWindow(MyTask myTask)
         {
             InitializeComponent();
             this.myTask = myTask;
+            EditMyTaskW = this;
 
             titleTextBox.Text = myTask.Title;
             descriptionTextBox.Text = myTask.Description;
@@ -43,9 +45,18 @@ namespace MyWpfProject.View.MainView.ToDoListView
                 this.Close();
             }
         }
-        private bool IsChangedFields()
+        private bool IsChangedFields() => titleTextBox.Text == myTask.Title && descriptionTextBox.Text == myTask.Description && deadLine.SelectedDate == myTask.Deadline;
+
+        private void CollapseWindow(object sender, RoutedEventArgs e) => WindowState = WindowState.Maximized ;
+
+        private void CloseWindow(object sender, RoutedEventArgs e) => this.Close();
+
+        private void Darg(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            return titleTextBox.Text == myTask.Title && descriptionTextBox.Text == myTask.Description && deadLine.SelectedDate == myTask.Deadline;
+            if(Mouse.LeftButton == MouseButtonState.Pressed) 
+            {
+                EditMyTaskW.DragMove();
+            }
         }
     }
 }

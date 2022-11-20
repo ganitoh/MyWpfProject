@@ -7,9 +7,25 @@
         Height="556" Width="718"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        ResizeMode="NoResize"
         >
     <Grid Background="#1b191c" >
-        <Border Margin="20" Background="#333333" CornerRadius="20" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Background="#1b191c" MouseDown="Drag">
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="0" Grid.Column="2">
+                <Button BorderThickness="0"   VerticalAlignment="Top" HorizontalAlignment="Right" Margin="5" Height="25" Width="25" Click="CollapseWindow"  Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" >
+                    <Image Source="/images/7148710_minus_remove_delete_trash_collapse_icon.png" Margin="3" />
+                </Button>
+                <Button BorderThickness="0"   VerticalAlignment="Top" HorizontalAlignment="Right" Margin="5" Height="25" Width="25" Click="CloseWindow"  Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" >
+                    <Image Source="/images/4879885_close_cross_delete_remove_icon.png" Margin="3" />
+                </Button>
+            </StackPanel>
+        </Grid>
+        <Border Margin="20 0 20 20" Background="#333333" CornerRadius="20" Grid.Row="1" >
             <Border.Effect>
                 <DropShadowEffect  BlurRadius="30" Color="black" ShadowDepth="0"/>
             </Border.Effect>

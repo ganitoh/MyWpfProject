@@ -9,6 +9,7 @@ using MyWpfProject.View.MainView.MyFinanceView;
 using MyWpfProject.View.MainView.ProfileEditorView;
 using MyWpfProject.View.MainView.ProfileView;
 using MyWpfProject.View.MainView.ToDoListView;
+using MyWpfProject.View.MainView.Sidebar;
 using System.Windows.Input;
 
 
@@ -19,7 +20,7 @@ namespace MyWpfProject
         User user;
         private List<MyTask> myTasks = new List<MyTask>();
         public static MainWindow MainWin { get; set; }
-
+        private bool isSidebarOpen = false;
         public MainWindow(User user)
         {
             AddExistingEntries();
@@ -28,12 +29,14 @@ namespace MyWpfProject
             MainWin = this;
             this.user = user;
             mainContetnControll.Content = new ProfileControl(user, myTasks);
+            MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
+            MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
         }
 
         private void Drag(object sender, RoutedEventArgs e)
         {
             if (Mouse.LeftButton == MouseButtonState.Pressed)
-                MainWin.DragMove();       
+                MainWin.DragMove();
         }
         private void AddExistingEntries()
         {
@@ -106,7 +109,7 @@ namespace MyWpfProject
         }
         private void ShowMyFinanceControll(object sender, RoutedEventArgs e)=> mainContetnControll.Content = new MyFinanceControl();
         private void CloseWindow(object sender, RoutedEventArgs e) => this.Close();
-        private void CollapseWindow(object sender, RoutedEventArgs e) => this.WindowState = WindowState.Minimized;
+        private void CollapseWindow(object sender, RoutedEventArgs e) => this.WindowState = WindowState.Maximized;
         private void ResizeMainWindow(object sender, RoutedEventArgs e)
         {
             if (WindowState == WindowState.Maximized)
@@ -116,6 +119,25 @@ namespace MyWpfProject
             else         
                 WindowState = WindowState.Maximized;
             
+        }
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (isSidebarOpen)
+                sidebarContentControl.Content = null;
+            else
+            {
+                sidebarContentControl.Content = new SidebarControl();
+                isSidebarOpen = true;
+            }
+
+        }
+        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (isSidebarOpen) 
+            {
+                sidebarContentControl.Content = null;
+                isSidebarOpen= false;
+            }
         }
     }
 }

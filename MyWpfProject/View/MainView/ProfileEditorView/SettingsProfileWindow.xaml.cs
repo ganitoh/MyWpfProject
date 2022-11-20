@@ -3,6 +3,7 @@ using System;
 using System.Data.SqlClient;
 using System.Windows;
 using System.Windows.Media;
+using System.Windows.Input;
 
 namespace MyWpfProject.View.MainView.ProfileEditorView
 {
@@ -10,10 +11,12 @@ namespace MyWpfProject.View.MainView.ProfileEditorView
     public partial class SettingsProfileWindow : Window
     {
         private User user;
+        public static SettingsProfileWindow SettingsProfile { get; set; }
         public SettingsProfileWindow(User user)
         {
             InitializeComponent();
             this.user = user;
+            SettingsProfile = this;
 
             nameTextBox.Text = user.Name;
             surnameTextBox.Text = user.Surname;
@@ -21,6 +24,8 @@ namespace MyWpfProject.View.MainView.ProfileEditorView
             emailTextBox.Text = user.Email;
             loginTextBox.Text = user.Login;
         }
+
+        
         private void EditProfileInfoButtonClick(object sender, RoutedEventArgs e)
         {
             if (IsChangedFields())
@@ -93,5 +98,12 @@ namespace MyWpfProject.View.MainView.ProfileEditorView
             ChangePasswordWindow editPassword = new ChangePasswordWindow(user);
             editPassword.Show();
         }
+        private void Drag(object sender, MouseButtonEventArgs e)
+        {
+            if (Mouse.LeftButton == MouseButtonState.Pressed)
+                SettingsProfile.DragMove();
+        }
+        private void CollapseWindow(object sender, RoutedEventArgs e) => this.WindowState = WindowState.Minimized;
+        private void CloseWindow(object sender, RoutedEventArgs e) => this.Close();
     }
 }

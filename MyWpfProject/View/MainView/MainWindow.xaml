@@ -15,11 +15,15 @@
         MinHeight="500"
         MinWidth="1000"
         >
-    <Grid Background="#1b191c" >
+    <Grid Background="#1b191c" MouseDown="Grid_MouseDown" >
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="350"/>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
         <Grid Grid.ColumnSpan="3" MouseDown="Drag">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="130"/>
@@ -45,7 +49,9 @@
                     <TextBlock Foreground="white" Style="{StaticResource MaterialDesignButtonTextBlock}"  IsHitTestVisible="False" Text="настройки" Grid.Column="6" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" />
                 </Grid>
             </Border>
-            <Button Grid.Column="0" Margin="0" Height="50" Width="50" Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" />
+            <Button Grid.Column="0" Margin="0" Height="50" Width="50" Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" Click="Button_Click">
+                <Image Source="/images/134216_menu_lines_hamburger_icon.png" Margin="5" />
+            </Button>
             <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="0" Grid.Column="2">
                 <Button BorderThickness="0"   VerticalAlignment="Top" HorizontalAlignment="Right" Margin="5" Height="25" Width="25" Click="ResizeMainWindow"  Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" >
                     <Image Source="/images/7548874_user_interface_maximize_resize_arrow_icon.png" Margin="3"/>
@@ -58,7 +64,8 @@
                 </Button>
             </StackPanel>
         </Grid>
-        <ContentControl x:Name="mainContetnControll"  Grid.Row="1" Grid.ColumnSpan="3" />
+        <ContentControl x:Name="mainContetnControll"  Grid.Row="1" Grid.ColumnSpan="2" />
+        <ContentControl x:Name="sidebarContentControl" Grid.Column="0" Grid.RowSpan="2"  />
 
     </Grid>
 </Window>

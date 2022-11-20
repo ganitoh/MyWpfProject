@@ -3,17 +3,20 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Windows;
+using System.Windows.Input;
 
 namespace MyWpfProject.View.MainView.ToDoListView
 {
     public partial class CreateMyTaskWindow : Window
     {
+        public CreateMyTaskWindow CreateTaskW { get; set; }
         private List<MyTask> myTasks;
 
         public CreateMyTaskWindow(List<MyTask> myTasks)
         {
             InitializeComponent();
             this.myTasks = myTasks;
+            CreateTaskW = this;
         }
         private void AddMyTask(object sender, RoutedEventArgs e)
         {
@@ -57,5 +60,15 @@ namespace MyWpfProject.View.MainView.ToDoListView
             }
             return 0;
         }
+
+        private void Drag(object sender, MouseButtonEventArgs e)
+        {
+            if (Mouse.LeftButton == MouseButtonState.Pressed)
+                CreateTaskW.DragMove();
+        }
+
+        private void CollapseWindow(object sender, RoutedEventArgs e) => WindowState = WindowState.Minimized;
+
+        private void CloseWindow(object sender, RoutedEventArgs e) => this.Close();
     }
 }

@@ -7,7 +7,9 @@
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         Title="SettingsProfileWindow" Height="450" Width="500"
-        WindowStartupLocation="CenterOwner">
+        WindowStartupLocation="CenterOwner"
+        WindowStyle="None"
+        ResizeMode="NoResize">
     <Grid Background="#1b191c">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150"/>
@@ -22,12 +24,22 @@
             <RowDefinition Height="50"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Border Grid.ColumnSpan="2" Height="35" Width="280" CornerRadius="10" Background="#9d7ae4">
-            <Border.Effect>
-                <DropShadowEffect BlurRadius="15" Color="black"/>
-            </Border.Effect>
-            <TextBlock  Foreground="white" VerticalAlignment="Center" HorizontalAlignment="Center" Text="настройки профиля" FontSize="24" />
-        </Border>
+        <Grid Grid.Row="0" Grid.ColumnSpan="2" MouseDown="Drag" Background="#1b191c">
+            <Border Grid.ColumnSpan="2" Height="35" Width="280" CornerRadius="10" Background="#FF673AB7">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="15" Color="black"/>
+                </Border.Effect>
+                <TextBlock  Foreground="white" VerticalAlignment="Center" HorizontalAlignment="Center" Text="настройки профиля" FontSize="24" />
+            </Border>
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="0" Grid.Column="2">
+                <Button BorderThickness="0"   VerticalAlignment="Top" HorizontalAlignment="Right" Margin="5" Height="20" Width="20" Click="CollapseWindow"  Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" >
+                    <Image Source="/images/7148710_minus_remove_delete_trash_collapse_icon.png" Margin="3" />
+                </Button>
+                <Button BorderThickness="0"   VerticalAlignment="Top" HorizontalAlignment="Right" Margin="5" Height="20" Width="20" Click="CloseWindow"  Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" >
+                    <Image Source="/images/4879885_close_cross_delete_remove_icon.png" Margin="3" />
+                </Button>
+            </StackPanel>
+        </Grid>
 
         <TextBlock Foreground="white"  Text="имя" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"   />
         <TextBlock Foreground="white" Text="фамилия" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center"   />
