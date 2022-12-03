@@ -109,7 +109,13 @@ namespace MyWpfProject
         }
         private void ShowMyFinanceControll(object sender, RoutedEventArgs e)=> mainContetnControll.Content = new MyFinanceControl();
         private void CloseWindow(object sender, RoutedEventArgs e) => this.Close();
-        private void CollapseWindow(object sender, RoutedEventArgs e) => this.WindowState = WindowState.Maximized;
+        private void CollapseWindow(object sender, RoutedEventArgs e)
+        {
+            if (this.WindowState == WindowState.Maximized)
+                WindowState = WindowState.Minimized;
+            else if (WindowState == WindowState.Minimized)
+                WindowState = WindowState.Maximized;
+        }
         private void ResizeMainWindow(object sender, RoutedEventArgs e)
         {
             if (WindowState == WindowState.Maximized)

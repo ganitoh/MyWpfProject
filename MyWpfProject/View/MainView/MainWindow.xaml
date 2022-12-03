@@ -53,11 +53,11 @@
                 <Image Source="/images/134216_menu_lines_hamburger_icon.png" Margin="5" />
             </Button>
             <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="0" Grid.Column="2">
-                <Button BorderThickness="0"   VerticalAlignment="Top" HorizontalAlignment="Right" Margin="5" Height="25" Width="25" Click="ResizeMainWindow"  Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" >
-                    <Image Source="/images/7548874_user_interface_maximize_resize_arrow_icon.png" Margin="3"/>
-                </Button>
                 <Button BorderThickness="0"   VerticalAlignment="Top" HorizontalAlignment="Right" Margin="5" Height="25" Width="25" Click="CollapseWindow" Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" >
                     <Image Source="/images/7148710_minus_remove_delete_trash_collapse_icon.png" Margin="3" />
+                </Button>
+                <Button BorderThickness="0"   VerticalAlignment="Top" HorizontalAlignment="Right" Margin="5" Height="25" Width="25" Click="ResizeMainWindow"  Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" >
+                    <Image Source="/images/7548874_user_interface_maximize_resize_arrow_icon.png" Margin="3"/>
                 </Button>
                 <Button BorderThickness="0"   VerticalAlignment="Top" HorizontalAlignment="Right" Margin="5" Height="25" Width="25" Click="CloseWindow" Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" >
                     <Image Source="/images/4879885_close_cross_delete_remove_icon.png" Margin="3" />
