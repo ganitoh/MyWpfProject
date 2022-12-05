@@ -12,7 +12,6 @@ using MyWpfProject.View.MainView.ToDoListView;
 using MyWpfProject.View.MainView.Sidebar;
 using System.Windows.Input;
 
-
 namespace MyWpfProject
 {
     public partial class MainWindow : Window
@@ -102,10 +101,19 @@ namespace MyWpfProject
         private void ShowToDoListControll(object sender, RoutedEventArgs e) => mainContetnControll.Content = new ToDoListControl(myTasks);
         private void SettingsProfileWindowShow(object sender, RoutedEventArgs e)
         {
-            SettingsProfileWindow settingsProfileWindow = new SettingsProfileWindow(user);
-            settingsProfileWindow.Show();
+            if (!SettingsProfileWindow.WindowOpen)
+            {
+                SettingsProfileWindow settingsProfileWindow = new SettingsProfileWindow(user);
 
-            settingsProfileWindow.Closed += (s, a) => { mainContetnControll.Content = new ProfileControl(user, myTasks); };
+                SettingsProfileWindow.WindowOpen = true;
+                settingsProfileWindow.Show();
+
+                settingsProfileWindow.Closed += (s, a) =>
+                {
+                    SettingsProfileWindow.WindowOpen = false;
+                    mainContetnControll.Content = new ProfileControl(user, myTasks);
+                };
+            }
         }
         private void ShowMyFinanceControll(object sender, RoutedEventArgs e)=> mainContetnControll.Content = new MyFinanceControl();
         private void CloseWindow(object sender, RoutedEventArgs e) => this.Close();

@@ -10,13 +10,14 @@ namespace MyWpfProject.View.MainView.ProfileEditorView
 
     public partial class SettingsProfileWindow : Window
     {
+        public static bool WindowOpen { get; set; }
         private User user;
         public static SettingsProfileWindow SettingsProfile { get; set; }
         public SettingsProfileWindow(User user)
         {
             InitializeComponent();
             this.user = user;
-            SettingsProfile = this;
+            SettingsProfile = this;            
 
             nameTextBox.Text = user.Name;
             surnameTextBox.Text = user.Surname;
