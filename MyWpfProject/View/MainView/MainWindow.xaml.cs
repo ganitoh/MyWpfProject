@@ -134,7 +134,7 @@ namespace MyWpfProject
                 WindowState = WindowState.Maximized;
             
         }
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void OpenSidebar(object sender, RoutedEventArgs e)
         {
             if (isSidebarOpen)
                 sidebarContentControl.Content = null;
@@ -145,7 +145,7 @@ namespace MyWpfProject
             }
 
         }
-        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        private void CloseSidebar(object sender, MouseButtonEventArgs e)
         {
             if (isSidebarOpen) 
             {

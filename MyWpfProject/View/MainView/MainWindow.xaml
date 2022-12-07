@@ -15,7 +15,7 @@
         MinHeight="500"
         MinWidth="1000"
         >
-    <Grid Background="#1b191c" MouseDown="Grid_MouseDown" >
+    <Grid Background="#1b191c" MouseDown="CloseSidebar" >
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
             <RowDefinition/>
@@ -49,7 +49,7 @@
                     <TextBlock Foreground="white" Style="{StaticResource MaterialDesignButtonTextBlock}"  IsHitTestVisible="False" Text="настройки" Grid.Column="6" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" />
                 </Grid>
             </Border>
-            <Button Grid.Column="0" Margin="0" Height="50" Width="50" Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" Click="Button_Click">
+            <Button Grid.Column="0" Margin="0" Height="50" Width="50" Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" Click="OpenSidebar">
                 <Image Source="/images/134216_menu_lines_hamburger_icon.png" Margin="5" />
             </Button>
             <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="0" Grid.Column="2">

@@ -96,8 +96,17 @@ namespace MyWpfProject.View.MainView.ProfileEditorView
         }
         private void ChangePassword(object sender, RoutedEventArgs e)
         {
-            ChangePasswordWindow editPassword = new ChangePasswordWindow(user);
-            editPassword.Show();
+            if (!ChangePasswordWindow.WindowOpen)
+            {
+                ChangePasswordWindow.WindowOpen = true;
+
+                ChangePasswordWindow editPassword = new ChangePasswordWindow(user);
+                editPassword.Show();
+
+                editPassword.Closed += (s, a) => { ChangePasswordWindow.WindowOpen = false; };
+            }
+
+
         }
         private void Drag(object sender, MouseButtonEventArgs e)
         {

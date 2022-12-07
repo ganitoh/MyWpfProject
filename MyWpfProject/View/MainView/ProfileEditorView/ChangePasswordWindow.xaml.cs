@@ -8,6 +8,7 @@ namespace MyWpfProject.View.MainView.ProfileEditorView
     public partial class ChangePasswordWindow : Window
     {
         private User user;
+        public static bool WindowOpen { get; set; } = false;
         public static ChangePasswordWindow ChangePassword { get; set; }
         public ChangePasswordWindow(User user)
         {
