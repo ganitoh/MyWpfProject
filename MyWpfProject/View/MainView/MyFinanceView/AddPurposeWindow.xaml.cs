@@ -10,25 +10,24 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace MyWpfProject.View.MainView.MyFinanceView
 {
-    public partial class MyFinanceControl : UserControl
+    public partial class AddPurposeWindow : Window
     {
-        public MyFinanceControl()
+        public static bool IsOpenWindow { get; set; } = false;
+        public AddPurposeWindow()
         {
             InitializeComponent();
+
+            IsOpenWindow = true;
+            this.Closed += (s,e) => { IsOpenWindow = false; };
         }
 
         private void AddPurpose(object sender, RoutedEventArgs e)
-        {         
-            if (AddPurposeWindow.IsOpenWindow == false)
-            {
-                AddPurposeWindow addPurposeWindow = new AddPurposeWindow();
-                addPurposeWindow.Show();
-            }
+        {
+
         }
     }
 }

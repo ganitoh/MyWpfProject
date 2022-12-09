@@ -8,7 +8,26 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Background="#1b191c" >
         <Border Margin="10" Background="#333333" CornerRadius="20">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="70"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Border  Grid.Row="0"  Background="#FF673AB7" CornerRadius="20 20 0 0" Margin="0 0 0 5">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="70"/>
+                        </Grid.ColumnDefinitions>
 
+                        <Button Content="Добавить  цель" Margin="10" Click="AddPurpose" HorizontalAlignment="Left"/>
+                        <Button Grid.Column="1" Width="60" >
+                            <Image Source="/images/211679_information_circled_icon.png" Height="25" Width="25"  />
+                        </Button>
+                    </Grid>
+                </Border>
+                
+            </Grid>
         </Border>
     </Grid>
 </UserControl>
