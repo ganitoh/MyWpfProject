@@ -9,17 +9,35 @@
         Title="AddPurposeWindow" Height="370" Width="500"
         WindowStyle="None"
         ResizeMode="NoResize">
-    <Grid Background="#1b191c">
-        <StackPanel Orientation="Vertical">
-            <Border Height="35" Width="280" CornerRadius="10" Background="#FF673AB7" Margin="0 10 0 0">
+    <Grid Background="#1b191c" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid MouseDown="Drag"  Background="#1b191c">
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Height="35" Width="280" CornerRadius="10" Background="#FF673AB7" Grid.ColumnSpan="2" MouseDown="Drag" >
                 <TextBlock  Foreground="white" VerticalAlignment="Center" HorizontalAlignment="Center" Text="добавить цель" FontSize="24" />
             </Border>
-            <TextBox Margin="50 30 50 0" Foreground="white" materialDesign:HintAssist.Hint="заголовок" />
-            <TextBox Margin="50 30 50 0" Foreground="white" materialDesign:HintAssist.Hint="описание" />
-            <TextBox Margin="50 30 50 0" Foreground="white" materialDesign:HintAssist.Hint="финальная сумма" />
-            <TextBox Margin="50 30 50 0" Foreground="white" materialDesign:HintAssist.Hint="собранная сумма (если уже что-то собранно)" />
+            <Button BorderThickness="0" Grid.Column="1"  VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0 5 30 0" Height="20" Width="20" Click="CollapseWindow"  Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" >
+                <Image Source="/images/7148710_minus_remove_delete_trash_collapse_icon.png" Margin="3" />
+            </Button>
+            <Button BorderThickness="0" Grid.Column="1"  VerticalAlignment="Top" HorizontalAlignment="Right" Margin="5" Height="20" Width="20" Click="CloseWindow"  Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" >
+                <Image Source="/images/4879885_close_cross_delete_remove_icon.png" Margin="3" />
+            </Button>
+        </Grid>
+        <StackPanel x:Name="mainStackPanel" Orientation="Vertical" Grid.Row="1">
+            <TextBox x:Name="titleTextBox" Margin="50 10 50 0" Foreground="white" materialDesign:HintAssist.Hint="заголовок" />
+            <TextBox x:Name="discriptionTextBox" Margin="50 30 50 0" Foreground="white" materialDesign:HintAssist.Hint="описание" />
+            <TextBox x:Name="finalAmountMonyTextBox" Margin="50 30 50 0" Foreground="white" materialDesign:HintAssist.Hint="финальная сумма" />
+            <TextBox x:Name="collectedAmountMonyTextBox" Margin="50 30 50 0" Foreground="white" materialDesign:HintAssist.Hint="собранная сумма (если уже что-то собранно)" />
 
-            <Button Margin="50" Width="150" HorizontalAlignment="Right" Content="добавить" Click="AddPurpose" />
+            <Button Margin="0 30 50 10" Width="150" HorizontalAlignment="Right" Content="добавить" Click="AddPurpose" />
         </StackPanel>
     </Grid>
 </Window>

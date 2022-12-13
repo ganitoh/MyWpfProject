@@ -8,7 +8,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Background="#1b191c" >
         <Border Margin="10" Background="#333333" CornerRadius="20">
-            <Grid>
+            <Grid >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="70"/>
                     <RowDefinition/>
@@ -18,12 +18,11 @@
                         <Button Content="Добавить" Margin="0" Click="AddMyTask"/>
                     </StackPanel>
                 </Border>
-                <ScrollViewer Grid.Column="0" Grid.Row="1" Margin="0 0  0 12" VerticalScrollBarVisibility="Visible">
+                <ScrollViewer Grid.Column="0" Grid.Row="1" Margin="0 0  0 12" VerticalScrollBarVisibility="Visible" Background="#333333">
                     <StackPanel Margin="10 0 0 0" x:Name="tasksStackPanel" Grid.Row="1" Orientation="Vertical">
 
                     </StackPanel>
                 </ScrollViewer>
-
             </Grid>
         </Border>
     </Grid>

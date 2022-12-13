@@ -11,18 +11,22 @@ using MyWpfProject.View.MainView.ProfileView;
 using MyWpfProject.View.MainView.ToDoListView;
 using MyWpfProject.View.MainView.Sidebar;
 using System.Windows.Input;
+using System.Windows.Navigation;
 
 namespace MyWpfProject
 {
     public partial class MainWindow : Window
     {
-        User user;
+        private User user;
         private List<MyTask> myTasks = new List<MyTask>();
-        public static MainWindow MainWin { get; set; }
+        private List<Purpose> purposes = new List<Purpose>();
         private bool isSidebarOpen = false;
+        public static MainWindow MainWin { get; set; }
         public MainWindow(User user)
         {
-            AddExistingEntries();
+            AddFromDBExistingEntries();
+            AddFromDBExisttingPurposes();
+
             InitializeComponent();
 
             MainWin = this;
@@ -32,12 +36,63 @@ namespace MyWpfProject
             MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
         }
 
-        private void Drag(object sender, RoutedEventArgs e)
+        private void AddFromDBExisttingPurposes()
         {
-            if (Mouse.LeftButton == MouseButtonState.Pressed)
-                MainWin.DragMove();
+            int numberRecordsInList = purposes.Count;
+
+            if (numberRecordsInList == 0)
+            {
+                DB dataBase = new DB();
+                dataBase.OpenConnection();
+
+                DataTable purposesTable = new DataTable();
+                SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Purposes", dataBase.Connection);
+                adapter.Fill(purposesTable);
+
+                int numberOfRecordsInDB = purposesTable.Rows.Count;
+
+                if (numberOfRecordsInDB != 0)
+                    GoReaderPurposes(dataBase);
+            }
         }
-        private void AddExistingEntries()
+
+        private void GoReaderPurposes(DB dataBase)
+        {
+            SqlDataReader reader = null;
+            try
+            {
+                SqlCommand selectCommand = new SqlCommand("SELECT * FROM Purposes", dataBase.Connection);
+                reader = selectCommand.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Purpose purpose = new Purpose();
+
+                    if (reader.GetName(0) == "id")
+                        purpose.ID = reader.GetInt32(0);
+                    if (reader.GetName(1) == "title")
+                        purpose.Title = reader.GetString(1);
+                    if (reader.GetName(2) == "_discription")
+                        purpose.Discription = reader.GetString(2);
+                    if (reader.GetName(3) == "finalAmountMony")
+                        purpose.FinalAmountMony = reader.GetInt32(3);
+                    if (reader.GetName(4) == "collectedAmountMony")
+                        purpose.CollectedAmountMony = reader.GetInt32(4);
+
+                    purposes.Add(purpose);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                if (reader != null && !reader.IsClosed)
+                    reader.Close();
+            }
+        }
+        private void AddFromDBExistingEntries()
         {
             int numberRecordsInList = myTasks.Count;
 
@@ -46,44 +101,43 @@ namespace MyWpfProject
                 DB dataBase = new DB();
                 dataBase.OpenConnection();
 
-                DataTable table = new DataTable();
+                DataTable myTasksTable = new DataTable();
                 SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM MyTasks", dataBase.Connection);
-                adapter.Fill(table);
-                int numberOfRecordsInDataBase = table.Rows.Count;
+                adapter.Fill(myTasksTable);
+                
+                int numberOfRecordsInDB = myTasksTable.Rows.Count;
 
-                if (numberOfRecordsInDataBase != 0)
-                    GoReader(dataBase);
+                if (numberOfRecordsInDB != 0)
+                    GoReaderMyTasks(dataBase);
             }
         }
-        async private void GoReader(DB dataBase)
+        private void GoReaderMyTasks(DB dataBase)
         {
             SqlDataReader reader = null;
 
             try
             {
-                await Task.Run(() =>
+                SqlCommand command = new SqlCommand($" SELECT * FROM MyTasks", dataBase.Connection);
+                reader = command.ExecuteReader();
+
+                while (reader.Read())
                 {
-                    SqlCommand command = new SqlCommand($" SELECT * FROM MyTasks", dataBase.Connection);
-                    reader = command.ExecuteReader();
+                    MyTask myTask = new MyTask();
 
-                    while (reader.Read())
-                    {
-                        MyTask myTask = new MyTask();
+                    if (reader.GetName(0) == "id")
+                        myTask.ID = reader.GetInt32(0);
+                    if (reader.GetName(1) == "title")
+                        myTask.Title = reader.GetString(1);
+                    if (reader.GetName(2) == "_description")
+                        myTask.Description = reader.GetString(2);
+                    if (reader.GetName(3) == "dateCreate")
+                        myTask.DateCreate = reader.GetDateTime(3);
+                    if (reader.GetName(4) == "deadline")
+                        myTask.Deadline = reader.GetDateTime(4);
 
-                        if (reader.GetName(0) == "id")
-                            myTask.ID = reader.GetInt32(0);
-                        if (reader.GetName(1) == "title")
-                            myTask.Title = reader.GetString(1);
-                        if (reader.GetName(2) == "_description")
-                            myTask.Description = reader.GetString(2);
-                        if (reader.GetName(3) == "dateCreate")
-                            myTask.DateCreate = reader.GetDateTime(3);
-                        if (reader.GetName(4) == "deadline")
-                            myTask.Deadline = reader.GetDateTime(4);
+                    myTasks.Add(myTask);
+                }
 
-                        myTasks.Add(myTask);
-                    }
-                });
             }
             catch (Exception ex)
             {
@@ -115,7 +169,7 @@ namespace MyWpfProject
                 };
             }
         }
-        private void ShowMyFinanceControll(object sender, RoutedEventArgs e)=> mainContetnControll.Content = new MyFinanceControl();
+        private void ShowMyFinanceControll(object sender, RoutedEventArgs e)=> mainContetnControll.Content = new MyFinanceControl(purposes);
         private void CloseWindow(object sender, RoutedEventArgs e) => this.Close();
         private void CollapseWindow(object sender, RoutedEventArgs e)
         {
@@ -152,6 +206,11 @@ namespace MyWpfProject
                 sidebarContentControl.Content = null;
                 isSidebarOpen= false;
             }
+        }
+        private void Drag(object sender, RoutedEventArgs e)
+        {
+           if (Mouse.LeftButton == MouseButtonState.Pressed)
+               MainWin.DragMove();
         }
     }
 }

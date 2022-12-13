@@ -7,12 +7,13 @@ using System.Windows.Media.Animation;
 
 namespace MyWpfProject.model
 {
-    internal class Purpose
+    public class Purpose
     {
-        public string Title { get; set; }
-        public string Discription { get; set; }
+        public int ID { get; set; }
         public int FinalAmountMony { get; set; }
         public int CollectedAmountMony { get; set; }
+        public string Title { get; set; }
+        public string Discription { get; set; }
         public Purpose()
         {
 

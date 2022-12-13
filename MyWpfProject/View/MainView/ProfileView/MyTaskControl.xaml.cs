@@ -9,10 +9,25 @@ namespace MyWpfProject.View.MainView.ProfileView
         public MyTaskControl(MyTask myTask)
         {
             InitializeComponent();
+            
+            if (myTask.Title.Length > 10)
+            {
+                string abbreviatedTitle = "";
+                for (int i = 0; i <= 10; i++)
+                    abbreviatedTitle += myTask.Title[i];
 
-            titleTextBlock.Text = myTask.Title;
-            dateCreateTextBlock.Text = myTask.DateCreate.ToShortDateString();
-            deadlineTextBlock.Text = myTask.Deadline.ToShortDateString();
+                abbreviatedTitle += "...";
+
+                titleTextBlock.Text = abbreviatedTitle;
+                dateCreateTextBlock.Text = myTask.DateCreate.ToShortDateString();
+                deadlineTextBlock.Text = myTask.Deadline.ToShortDateString();
+            }
+            else
+            {
+                titleTextBlock.Text = myTask.Title;
+                dateCreateTextBlock.Text = myTask.DateCreate.ToShortDateString();
+                deadlineTextBlock.Text = myTask.Deadline.ToShortDateString();
+            }
         }
     }
 }

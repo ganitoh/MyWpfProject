@@ -24,7 +24,7 @@
             <ColumnDefinition Width="350"/>
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <Grid Grid.ColumnSpan="3" MouseDown="Drag">
+        <Grid Grid.ColumnSpan="3" MouseDown="Drag" Background="#1b191c">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="130"/>
                 <ColumnDefinition/>
@@ -64,7 +64,7 @@
                 </Button>
             </StackPanel>
         </Grid>
-        <ContentControl x:Name="mainContetnControll"  Grid.Row="1" Grid.ColumnSpan="2" />
+        <ContentControl x:Name="mainContetnControll"  Grid.Row="1" Grid.ColumnSpan="2"  />
         <ContentControl x:Name="sidebarContentControl" Grid.Column="0" Grid.RowSpan="2"  />
 
     </Grid>

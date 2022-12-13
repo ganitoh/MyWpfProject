@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyWpfProject.model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,9 +18,12 @@ namespace MyWpfProject.View.MainView.MyFinanceView
 {
     public partial class MyFinanceControl : UserControl
     {
-        public MyFinanceControl()
+        private List<Purpose> purposes;
+        public MyFinanceControl(List<Purpose> purposes)
         {
             InitializeComponent();
+
+            this.purposes = purposes;
         }
 
         private void AddPurpose(object sender, RoutedEventArgs e)
