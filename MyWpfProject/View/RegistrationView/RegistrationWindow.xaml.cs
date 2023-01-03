@@ -7,8 +7,8 @@ namespace MyWpfProject.View.RegistrationView
 {
     public partial class RegistrationWindow : Window
     {
-        public RegistrationWindow RegWindow { get; set; }
-        private RegistrationWindow regWindow;
+        public static RegistrationWindow RegWindow { get; set; }
+
         public RegistrationWindow()
         {
             InitializeComponent();

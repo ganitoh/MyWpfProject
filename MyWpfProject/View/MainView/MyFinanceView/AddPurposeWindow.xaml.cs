@@ -19,10 +19,13 @@ namespace MyWpfProject.View.MainView.MyFinanceView
 {
     public partial class AddPurposeWindow : Window
     {
+        private List<Purpose> purposes;
         public static bool IsOpenWindow { get; set; } = false;
         public AddPurposeWindow PurposeWindow { get; set; }
-        public AddPurposeWindow()
+        public AddPurposeWindow(List<Purpose> purposes)
         {
+            this.purposes = purposes;
+
             InitializeComponent();
 
             PurposeWindow = this;
@@ -43,16 +46,19 @@ namespace MyWpfProject.View.MainView.MyFinanceView
                     Title = titleTextBox.Text,
                     Discription = discriptionTextBox.Text,
                     FinalAmountMony = Convert.ToInt32(finalAmountMonyTextBox.Text),
-                    CollectedAmountMony = Convert.ToInt32(collectedAmountMonyTextBox.Text)
+                    CollectedAmountMony = Convert.ToInt32(collectedAmountMonyTextBox.Text),
+                    IsMainPurposes = isMainPurposesCheckBox.IsChecked.Value
                 };
 
                 DB dataBase = new DB();
                 dataBase.OpenConnection();
 
                 SqlCommand insertCommand = new SqlCommand(
-                    $"INSERT INTO Purposes (title,_discription,finalAmountMony,collectedAmountMony)" +
-                    $" VALUES (N'{purpose.Title}',N'{purpose.Discription}',N'{purpose.FinalAmountMony}',N'{purpose.CollectedAmountMony}')", dataBase.Connection);
+                    $"INSERT INTO Purposes (title,_discription,finalAmountMony,collectedAmountMony,isMainPurposes)" +
+                    $" VALUES (N'{purpose.Title}',N'{purpose.Discription}',N'{purpose.FinalAmountMony}',N'{purpose.CollectedAmountMony}' ,N'{purpose.IsMainPurposes}')", dataBase.Connection);
                 insertCommand.ExecuteNonQuery();
+
+                purposes.Add(purpose);
 
                 this.Close();
             }

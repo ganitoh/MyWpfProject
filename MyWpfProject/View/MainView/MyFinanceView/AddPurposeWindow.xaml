@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MyWpfProject.View.MainView.MyFinanceView"
         mc:Ignorable="d"
-        Title="AddPurposeWindow" Height="370" Width="500"
+        Title="AddPurposeWindow" Height="400" Width="500"
         WindowStyle="None"
         ResizeMode="NoResize">
     <Grid Background="#1b191c" >
@@ -36,7 +36,7 @@
             <TextBox x:Name="discriptionTextBox" Margin="50 30 50 0" Foreground="white" materialDesign:HintAssist.Hint="описание" />
             <TextBox x:Name="finalAmountMonyTextBox" Margin="50 30 50 0" Foreground="white" materialDesign:HintAssist.Hint="финальная сумма" />
             <TextBox x:Name="collectedAmountMonyTextBox" Margin="50 30 50 0" Foreground="white" materialDesign:HintAssist.Hint="собранная сумма (если уже что-то собранно)" />
-
+            <CheckBox x:Name="isMainPurposesCheckBox" Margin="50 10 50 0" Content="основная цель" Foreground="Gray" Style="{ StaticResource  MaterialDesignFilterChipPrimaryOutlineCheckBox}" />
             <Button Margin="0 30 50 10" Width="150" HorizontalAlignment="Right" Content="добавить" Click="AddPurpose" />
         </StackPanel>
     </Grid>

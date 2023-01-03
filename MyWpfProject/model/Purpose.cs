@@ -14,6 +14,7 @@ namespace MyWpfProject.model
         public int CollectedAmountMony { get; set; }
         public string Title { get; set; }
         public string Discription { get; set; }
+        public bool IsMainPurposes { get; set; }
         public Purpose()
         {
 

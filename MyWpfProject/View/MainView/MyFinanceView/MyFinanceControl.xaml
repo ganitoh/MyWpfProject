@@ -13,7 +13,12 @@
                     <RowDefinition Height="70"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <Border  Grid.Row="0" Grid.ColumnSpan="2"  Background="#FF673AB7" CornerRadius="20 20 0 0" Margin="0 0 0 5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="250"/>
+                    <ColumnDefinition Width="4"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Border  Grid.Row="0" Grid.ColumnSpan="3"  Background="#FF673AB7" CornerRadius="20 20 0 0" Margin="0 0 0 5">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
@@ -26,16 +31,11 @@
                         </Button>
                     </Grid>
                 </Border>
-                <ScrollViewer Grid.ColumnSpan="2" Grid.Row="1" Margin="0 0  0 12" VerticalScrollBarVisibility="Visible" Background="#333333">
-                    <Grid Margin="0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <StackPanel x:Name="leftColumn" Grid.Column="0" Orientation="Vertical" />
-                        <StackPanel x:Name="rightColumn" Grid.Column="1" Orientation="Vertical"/>
-                    </Grid>
+                <Border Grid.Column="1" Grid.Row="1" Background="#FF673AB7"/>
+                <ScrollViewer  Grid.Row="1" Grid.Column="0" >
+                    <StackPanel x:Name="mainStackPanel"/>
                 </ScrollViewer>
+                <ContentControl x:Name="mainContentControl" Grid.Row="1" Grid.Column="2" />
             </Grid>
         </Border>
     </Grid>

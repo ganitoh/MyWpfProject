@@ -25,23 +25,33 @@ namespace MyWpfProject.View.MainView.MyFinanceView
 
             this.purposes = purposes;
 
-            PurposeInfoControl purposeInfoControl = new PurposeInfoControl();
-            purposeInfoControl.Height = 400;
-            purposeInfoControl.Width = 600;
-            leftColumn.Children.Add(purposeInfoControl);
+            foreach (Purpose purpose in purposes)
+                AddPurposeShowInfoButton(purpose);          
+        }
+        private void AddPurposeShowInfoButton(Purpose purpose)
+        {
+            Button btt = new Button();
+            btt.Content = purpose.Title;
+            btt.Margin = new Thickness(5);
+            btt.Click += (s, e) => { mainContentControl.Content = new PurposeInfoControl(purpose); };
 
-            PurposeInfoControl purposeInfoControl1 = new PurposeInfoControl();
-            purposeInfoControl1.Height = 400;
-            purposeInfoControl1.Width = 600;
-            rightColumn.Children.Add(purposeInfoControl1);
+            mainStackPanel.Children.Add(btt);
         }
 
         private void AddPurpose(object sender, RoutedEventArgs e)
-        {         
+        {
             if (AddPurposeWindow.IsOpenWindow == false)
             {
-                AddPurposeWindow addPurposeWindow = new AddPurposeWindow();
+                int countPurpose = purposes.Count;
+
+                AddPurposeWindow addPurposeWindow = new AddPurposeWindow(purposes);
                 addPurposeWindow.Show();
+
+                addPurposeWindow.Closed += (s, a) => 
+                {
+                    if (countPurpose != purposes.Count)
+                        AddPurposeShowInfoButton(purposes.Last());
+                };
             }
         }
     }
