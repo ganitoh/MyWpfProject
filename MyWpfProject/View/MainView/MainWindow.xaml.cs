@@ -3,15 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data;
-using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 using MyWpfProject.View.MainView.MyFinanceView;
 using MyWpfProject.View.MainView.ProfileEditorView;
 using MyWpfProject.View.MainView.ProfileView;
 using MyWpfProject.View.MainView.ToDoListView;
 using MyWpfProject.View.MainView.Sidebar;
-using System.Windows.Input;
-using System.Windows.Navigation;
 
 namespace MyWpfProject
 {

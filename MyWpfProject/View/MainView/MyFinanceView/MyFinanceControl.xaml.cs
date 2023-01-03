@@ -24,6 +24,16 @@ namespace MyWpfProject.View.MainView.MyFinanceView
             InitializeComponent();
 
             this.purposes = purposes;
+
+            PurposeInfoControl purposeInfoControl = new PurposeInfoControl();
+            purposeInfoControl.Height = 400;
+            purposeInfoControl.Width = 600;
+            leftColumn.Children.Add(purposeInfoControl);
+
+            PurposeInfoControl purposeInfoControl1 = new PurposeInfoControl();
+            purposeInfoControl1.Height = 400;
+            purposeInfoControl1.Width = 600;
+            rightColumn.Children.Add(purposeInfoControl1);
         }
 
         private void AddPurpose(object sender, RoutedEventArgs e)
