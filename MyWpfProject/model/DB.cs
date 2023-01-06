@@ -24,7 +24,6 @@ namespace MyWpfProject.model
         {
             if (_connection != null || _connection.State != ConnectionState.Closed)
                 _connection.Close();
-
         }
     }
 }

@@ -10,7 +10,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         WindowStartupLocation="CenterScreen"
         Title="главное окно"
-        WindowStyle="None"
+        WindowStyle="none"
         ResizeMode="CanResize"
         MinHeight="500"
         MinWidth="1000"
