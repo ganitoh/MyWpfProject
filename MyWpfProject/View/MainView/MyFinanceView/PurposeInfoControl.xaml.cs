@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -23,6 +24,8 @@ namespace MyWpfProject.View.MainView.MyFinanceView
     {
         private ContentControl contentControl;
         private Purpose purpose;
+        private string finalExpression;
+        private int countNum;
         public PurposeInfoControl(Purpose purpose, ContentControl contentControl)
         {
             this.purpose = purpose;
@@ -64,8 +67,94 @@ namespace MyWpfProject.View.MainView.MyFinanceView
             }
             catch (Exception)
             {
-                MessageBox.Show("не верный формат");
+                MessageBox.Show("неверный формат");
                 return 0;
+            }
+        }
+        private void Clear(object sender, RoutedEventArgs e) => valueTextBlock.Text = "0";
+        private void NineNum(object sender, RoutedEventArgs e)
+        {
+            if (valueTextBlock.Text == "0")
+                valueTextBlock.Text = "9";
+            else
+                valueTextBlock.Text += "9";
+        }
+        private void EightNum(object sender, RoutedEventArgs e)
+        {
+            if (valueTextBlock.Text == "0")
+                valueTextBlock.Text = "8";
+            else
+                valueTextBlock.Text += "8";
+        }
+        private void SevenNum(object sender, RoutedEventArgs e)
+        {
+            if (valueTextBlock.Text == "0")
+                valueTextBlock.Text = "7";
+            else
+                valueTextBlock.Text += "7";
+        }
+        private void SixNum(object sender, RoutedEventArgs e)
+        {
+            if (valueTextBlock.Text == "0")
+                valueTextBlock.Text = "6";
+            else
+                valueTextBlock.Text += "6";
+        }
+        private void FiveNum(object sender, RoutedEventArgs e)
+        {
+            if (valueTextBlock.Text == "0")
+                valueTextBlock.Text = "5";
+            else
+                valueTextBlock.Text += "5";
+        }
+        private void FourNum(object sender, RoutedEventArgs e)
+        {
+            if (valueTextBlock.Text == "0")
+                valueTextBlock.Text = "4";
+            else
+                valueTextBlock.Text += "4";
+        }
+        private void ThreeNum(object sender, RoutedEventArgs e)
+        {
+            if (valueTextBlock.Text == "0")
+                valueTextBlock.Text = "3";
+            else
+                valueTextBlock.Text += "3";
+        }
+        private void TwoNum(object sender, RoutedEventArgs e)
+        {
+            if (valueTextBlock.Text == "0")
+                valueTextBlock.Text = "2";
+            else
+                valueTextBlock.Text += "2";
+        }
+        private void OneNum(object sender, RoutedEventArgs e)
+        {
+            if (valueTextBlock.Text == "0")
+                valueTextBlock.Text = "1";
+            else
+                valueTextBlock.Text += "1";
+        }
+        private void ZeroNum(object sender, RoutedEventArgs e)
+        {
+            if (valueTextBlock.Text == "0")
+                valueTextBlock.Text = "0";
+            else
+                valueTextBlock.Text += "0";
+        }
+        private void SumNum(object sender, RoutedEventArgs e)
+        {
+            finalExpression += valueTextBlock.Text;
+            finalExpression += '+';
+        }
+        private void ResultNums(object sender, RoutedEventArgs e)
+        {
+            Regex resultExpression = new Regex(@"(\d*)\+(\d)");
+            Match resultMatch = resultExpression.Match(finalExpression);
+
+            if (resultMatch.Success)
+            {
+                int result = Convert.ToInt32(resultMatch.Groups[1]);
             }
         }
     }
