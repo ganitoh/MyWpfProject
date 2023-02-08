@@ -7,6 +7,10 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using MyWpfProject.View.RegistrationView;
+using System.IO;
+using System.Text.RegularExpressions;
+using System.Configuration;
+using System.Diagnostics;
 
 namespace MyWpfProject.View.AuthorizationView
 {
@@ -15,9 +19,32 @@ namespace MyWpfProject.View.AuthorizationView
         public static AuthorizationWindow _AuthorizationWindow { get; set; }
         public AuthorizationWindow()
         {
-            InitializeComponent();
-            _AuthorizationWindow = this;
-            AnimationButton();
+            bool authorization = Properties.Settings.Default.authorization;
+
+            if (authorization)
+            {
+                User user = new User
+                {
+                    ID = Properties.Settings.Default.id,
+                    Name = Properties.Settings.Default.name,
+                    Surname = Properties.Settings.Default.surname,
+                    Email = Properties.Settings.Default.email,
+                    Login = Properties.Settings.Default.login,
+                    Password = Properties.Settings.Default.password,
+                    Age= Properties.Settings.Default.age,
+                };
+
+                MainWindow mainWindow = new MainWindow(user);
+                mainWindow.Show();
+                this.Close();
+
+            }
+            else
+            {
+                InitializeComponent();
+                _AuthorizationWindow = this;
+                AnimationButton();
+            }
         }
 
         private void Drag(object sender, RoutedEventArgs e)
@@ -57,18 +84,36 @@ namespace MyWpfProject.View.AuthorizationView
 
                 if (sqlRequestSelect.Rows.Count > 0)
                 {
-                    MainWindow meinWindow = new MainWindow(GetUserFromDataBase(textBoxLogin.Text, passwordBox.Password));
-                    meinWindow.Show();
+                    User user = GetUserFromDataBase(textBoxLogin.Text, passwordBox.Password);
+
+                    SetUserIfoToconfig(user);
+
+                    MainWindow mainWindow = new MainWindow(user);
+                    mainWindow.Show();
                     this.Close();
+
+
+                    Properties.Settings.Default.authorization = true;
+                    Properties.Settings.Default.Save();
                 }
                 else
                 {
-                    MessageBox.Show("пароль иди логин введены неверно");
+                    MessageBox.Show("пароль или логин введены неверно");
                     passwordBox.Clear();
                 }
 
                 db.CloseConnection();
             }
+        }
+        private void SetUserIfoToconfig(User user)
+        {
+            Properties.Settings.Default.id = user.ID;
+            Properties.Settings.Default.name = user.Name;
+            Properties.Settings.Default.surname = user.Surname;
+            Properties.Settings.Default.age = user.Age;
+            Properties.Settings.Default.email = user.Email;
+            Properties.Settings.Default.login = user.Login;
+            Properties.Settings.Default.password = user.Password;
         }
         private bool IsEmptyLinesAunhorizationWindows()
         {
@@ -141,7 +186,6 @@ namespace MyWpfProject.View.AuthorizationView
             else
                 return false;
         }
-
         private void CloseWindow(object sender, RoutedEventArgs e) => this.Close();
         private void CollapseWindow(object sender, RoutedEventArgs e) => this.WindowState = WindowState.Minimized;
     }

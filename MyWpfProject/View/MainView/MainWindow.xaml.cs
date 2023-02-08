@@ -10,6 +10,7 @@ using MyWpfProject.View.MainView.ProfileEditorView;
 using MyWpfProject.View.MainView.ProfileView;
 using MyWpfProject.View.MainView.ToDoListView;
 using MyWpfProject.View.MainView.Sidebar;
+using MyWpfProject.View.AuthorizationView;
 
 namespace MyWpfProject
 {
@@ -209,6 +210,17 @@ namespace MyWpfProject
         {
            if (Mouse.LeftButton == MouseButtonState.Pressed)
                MainWin.DragMove();
+        }
+
+        private void ExitFromApplication(object sender, RoutedEventArgs e)
+        {
+            Properties.Settings.Default.authorization = false;
+            Properties.Settings.Default.Save();
+
+            AuthorizationWindow authorization = new AuthorizationWindow();
+            authorization.Show();
+            this.Close();
+
         }
     }
 }

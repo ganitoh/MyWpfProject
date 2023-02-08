@@ -45,6 +45,7 @@
                     <Button Grid.Column="3" Margin="5 5 5 5" Height="50" Width="150" Content="Заглушка" FontSize="15"  />
                     <ComboBox Style="{StaticResource MaterialDesignOutlinedComboBox}" Background="#333333"   Margin="10" Grid.Column="6" Grid.Row="0" Height="50" Width="150" Text="настройки"  >
                         <Button  Background="#333333" Content="редактировать аккаунт"  Click="SettingsProfileWindowShow"/>
+                        <Button  Background="#333333" Content="выход"  Click="ExitFromApplication"/>
                     </ComboBox>
                     <TextBlock Foreground="white" Style="{StaticResource MaterialDesignButtonTextBlock}"  IsHitTestVisible="False" Text="настройки" Grid.Column="6" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" />
                 </Grid>
