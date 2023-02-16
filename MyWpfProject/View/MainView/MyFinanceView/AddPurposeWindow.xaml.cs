@@ -38,11 +38,11 @@ namespace MyWpfProject.View.MainView.MyFinanceView
 
         private void AddPurpose(object sender, RoutedEventArgs e)
         {
-
             if (IsAllFieldsCorrect())
             {
                 Purpose purpose = new Purpose()
                 {
+                    UserId = Properties.Settings.Default.id,
                     Title = titleTextBox.Text,
                     Discription = discriptionTextBox.Text,
                     FinalAmountMony = Convert.ToInt32(finalAmountMonyTextBox.Text),
@@ -53,9 +53,10 @@ namespace MyWpfProject.View.MainView.MyFinanceView
                 DB dataBase = new DB();
                 dataBase.OpenConnection();
 
+
                 SqlCommand insertCommand = new SqlCommand(
-                    $"INSERT INTO Purposes (title,_discription,finalAmountMony,collectedAmountMony,isMainPurposes)" +
-                    $" VALUES (N'{purpose.Title}',N'{purpose.Discription}',N'{purpose.FinalAmountMony}',N'{purpose.CollectedAmountMony}' ,N'{purpose.IsMainPurposes}')", dataBase.Connection);
+                    $"INSERT INTO Purposes (userId,title,_discription,finalAmountMony,collectedAmountMony,isMainPurposes)" +
+                    $" VALUES (N'{purpose.UserId}',N'{purpose.Title}',N'{purpose.Discription}',N'{purpose.FinalAmountMony}',N'{purpose.CollectedAmountMony}' ,N'{purpose.IsMainPurposes}')", dataBase.Connection);
                 insertCommand.ExecuteNonQuery();
 
                 purposes.Add(purpose);

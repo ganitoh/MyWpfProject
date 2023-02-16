@@ -10,6 +10,7 @@ namespace MyWpfProject.model
     public class Purpose
     {
         public int ID { get; set; }
+        public int UserId { get; set; }
         public int FinalAmountMony { get; set; }
         public int CollectedAmountMony { get; set; }
         public string Title { get; set; }
@@ -19,8 +20,9 @@ namespace MyWpfProject.model
         {
 
         }
-        public Purpose(string title, string discription, int amountMony, int collectedAmountMony)
+        public Purpose(int userId,string title, string discription, int amountMony, int collectedAmountMony)
         {
+            UserId = userId;
             Title = title;
             Discription = discription;
             FinalAmountMony = amountMony;

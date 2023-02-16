@@ -23,13 +23,14 @@ namespace MyWpfProject
         public static MainWindow MainWin { get; set; }
         public MainWindow(User user)
         {
+            this.user = user;
+            MainWin = this;
+
             AddFromDBExistingEntries();
             AddFromDBExisttingPurposes();
 
             InitializeComponent();
 
-            MainWin = this;
-            this.user = user;
             mainContetnControll.Content = new ProfileControl(user, myTasks);
             MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
             MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
@@ -45,7 +46,7 @@ namespace MyWpfProject
                 dataBase.OpenConnection();
 
                 DataTable purposesTable = new DataTable();
-                SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Purposes", dataBase.Connection);
+                SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Purposes where userId={user.ID}", dataBase.Connection);
                 adapter.Fill(purposesTable);
 
                 int numberOfRecordsInDB = purposesTable.Rows.Count;
@@ -60,23 +61,19 @@ namespace MyWpfProject
             SqlDataReader reader = null;
             try
             {
-                SqlCommand selectCommand = new SqlCommand("SELECT * FROM Purposes", dataBase.Connection);
+                SqlCommand selectCommand = new SqlCommand($"SELECT * FROM Purposes where userId={user.ID}", dataBase.Connection);
                 reader = selectCommand.ExecuteReader();
 
                 while (reader.Read())
                 {
                     Purpose purpose = new Purpose();
 
-                    if (reader.GetName(0) == "id")
-                        purpose.ID = reader.GetInt32(0);
-                    if (reader.GetName(1) == "title")
-                        purpose.Title = reader.GetString(1);
-                    if (reader.GetName(2) == "_discription")
-                        purpose.Discription = reader.GetString(2);
-                    if (reader.GetName(3) == "finalAmountMony")
-                        purpose.FinalAmountMony = reader.GetInt32(3);
-                    if (reader.GetName(4) == "collectedAmountMony")
-                        purpose.CollectedAmountMony = reader.GetInt32(4);
+                    purpose.ID = reader.GetInt32(0);
+                    purpose.UserId = reader.GetInt32(1);
+                    purpose.Title = reader.GetString(2);
+                    purpose.Discription = reader.GetString(3);
+                    purpose.FinalAmountMony = reader.GetInt32(4);
+                    purpose.CollectedAmountMony = reader.GetInt32(5);
 
                     purposes.Add(purpose);
                 }
@@ -101,7 +98,7 @@ namespace MyWpfProject
                 dataBase.OpenConnection();
 
                 DataTable myTasksTable = new DataTable();
-                SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM MyTasks", dataBase.Connection);
+                SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM MyTasks where userId={user.ID}", dataBase.Connection);
                 adapter.Fill(myTasksTable);
                 
                 int numberOfRecordsInDB = myTasksTable.Rows.Count;
@@ -116,23 +113,20 @@ namespace MyWpfProject
 
             try
             {
-                SqlCommand command = new SqlCommand($" SELECT * FROM MyTasks", dataBase.Connection);
+                SqlCommand command = new SqlCommand($" SELECT * FROM MyTasks where userId={user.ID} ", dataBase.Connection);
                 reader = command.ExecuteReader();
 
                 while (reader.Read())
                 {
                     MyTask myTask = new MyTask();
 
-                    if (reader.GetName(0) == "id")
-                        myTask.ID = reader.GetInt32(0);
-                    if (reader.GetName(1) == "title")
-                        myTask.Title = reader.GetString(1);
-                    if (reader.GetName(2) == "_description")
-                        myTask.Description = reader.GetString(2);
-                    if (reader.GetName(3) == "dateCreate")
-                        myTask.DateCreate = reader.GetDateTime(3);
-                    if (reader.GetName(4) == "deadline")
-                        myTask.Deadline = reader.GetDateTime(4);
+                    
+                    myTask.ID = reader.GetInt32(0);
+                    myTask.UserId = reader.GetInt32(1);
+                    myTask.Title = reader.GetString(2);
+                    myTask.Description = reader.GetString(3);
+                    myTask.DateCreate = reader.GetDateTime(4);
+                    myTask.Deadline = reader.GetDateTime(5);
 
                     myTasks.Add(myTask);
                 }
@@ -211,7 +205,6 @@ namespace MyWpfProject
            if (Mouse.LeftButton == MouseButtonState.Pressed)
                MainWin.DragMove();
         }
-
         private void ExitFromApplication(object sender, RoutedEventArgs e)
         {
             Properties.Settings.Default.authorization = false;
@@ -220,7 +213,6 @@ namespace MyWpfProject
             AuthorizationWindow authorization = new AuthorizationWindow();
             authorization.Show();
             this.Close();
-
         }
     }
 }

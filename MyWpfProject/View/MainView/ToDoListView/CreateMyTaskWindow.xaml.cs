@@ -20,12 +20,13 @@ namespace MyWpfProject.View.MainView.ToDoListView
         }
         private void AddMyTask(object sender, RoutedEventArgs e)
         {
-            MyTask myTask = new MyTask((DateTime)deadLine.SelectedDate, descriptionTextBox.Text, titleTextBox.Text);
+            int userId = Properties.Settings.Default.id;
+            MyTask myTask = new MyTask(userId,(DateTime)deadLine.SelectedDate, descriptionTextBox.Text, titleTextBox.Text);
 
             DB dataBase = new DB();
             dataBase.OpenConnection();
 
-            SqlCommand command = new SqlCommand($"SET LANGUAGE russian INSERT INTO MyTasks (title,_description,dateCreate,deadline) VALUES (N'{myTask.Title}',N'{myTask.Description}','{myTask.DateCreate}','{myTask.Deadline}')", dataBase.Connection);
+            SqlCommand command = new SqlCommand($"SET LANGUAGE russian INSERT INTO MyTasks (userId,title,_description,dateCreate,deadline) VALUES (N'{myTask.UserId}',N'{myTask.Title}',N'{myTask.Description}','{myTask.DateCreate}','{myTask.Deadline}')", dataBase.Connection);
             command.ExecuteNonQuery();
 
             //id к элементу добаляется только в самой базе данных, и для того что бы достать id используем метод GetIdMyTask(dataBase)

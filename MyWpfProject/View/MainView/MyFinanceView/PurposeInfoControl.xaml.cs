@@ -1,22 +1,11 @@
 ﻿using MyWpfProject.model;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Text.RegularExpressions;
+using System.Data;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Data.SqlClient;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Windows.Media.Animation;
+using System.Windows.Markup;
 
 namespace MyWpfProject.View.MainView.MyFinanceView
 {
@@ -25,7 +14,6 @@ namespace MyWpfProject.View.MainView.MyFinanceView
         private ContentControl contentControl;
         private Purpose purpose;
         private string finalExpression;
-        private int countNum;
         public PurposeInfoControl(Purpose purpose, ContentControl contentControl)
         {
             this.purpose = purpose;
@@ -35,8 +23,72 @@ namespace MyWpfProject.View.MainView.MyFinanceView
             purposeProgressBar.Value = GetPercentOfFinalAmount();
             titileTextBlock.Text = purpose.Title;
             discriptionPurposeTextBlock.Text = purpose.Discription;
+            amountLeftTextBlock.Text = $"осталась сумма: {purpose.GetRemainingAmountMony()}";
 
             ProgressFinalAmount();
+
+            foreach (UIElement item in calcGrid.Children)
+            {
+                if (item is Button)
+                {
+                    ((Button)item).Click += Calculate;
+                }
+            }
+        }
+
+        private void Calculate(object sender, RoutedEventArgs e)
+        {
+            string newSymbolWithPressedBtt = (string)((Button)e.OriginalSource).Content;
+
+            if (newSymbolWithPressedBtt == "C")
+            {
+                valueTextBlock.FontSize = 35;
+                finalExpression = "";
+                valueTextBlock.Text = "0";
+            }
+            else if (newSymbolWithPressedBtt == "=")
+            {
+                string result = new DataTable().Compute(finalExpression,null).ToString();
+
+                if (result.Length > 12) 
+                {
+                    valueTextBlock.FontSize = 25;
+                    valueTextBlock.Text = result;
+                    finalExpression = result;
+                }
+                else
+                {
+                    valueTextBlock.Text = result;
+                    finalExpression = result;
+                }
+                
+            }
+            else if (newSymbolWithPressedBtt == "<")
+            {
+                string lastSymbol = valueTextBlock.Text[valueTextBlock.Text.Length-1].ToString();
+                string resultValueString = finalExpression.Replace(lastSymbol,"");
+                
+                valueTextBlock.Text = resultValueString;
+                finalExpression = resultValueString;
+            }
+            else
+            {
+                WriteInExpressionNewSymbol(newSymbolWithPressedBtt);
+            }
+        }
+        private void WriteInExpressionNewSymbol(string newSymbol)
+        {
+            if (valueTextBlock.Text != "0")
+            {
+                finalExpression += newSymbol;
+                valueTextBlock.Text += newSymbol;
+            }
+            else
+            {
+                valueTextBlock.Text = "";
+                finalExpression += newSymbol;
+                valueTextBlock.Text += newSymbol;
+            }
         }
         async private void ProgressFinalAmount()
          {
@@ -58,6 +110,8 @@ namespace MyWpfProject.View.MainView.MyFinanceView
 
             dataBase.CloseConnection();
             valueMonyTextBox.Clear();
+
+            amountLeftTextBlock.Text = $"осталась сумма: {purpose.GetRemainingAmountMony()}";
         }
         private int GetAmountMony()
         {
@@ -71,91 +125,6 @@ namespace MyWpfProject.View.MainView.MyFinanceView
                 return 0;
             }
         }
-        private void Clear(object sender, RoutedEventArgs e) => valueTextBlock.Text = "0";
-        private void NineNum(object sender, RoutedEventArgs e)
-        {
-            if (valueTextBlock.Text == "0")
-                valueTextBlock.Text = "9";
-            else
-                valueTextBlock.Text += "9";
-        }
-        private void EightNum(object sender, RoutedEventArgs e)
-        {
-            if (valueTextBlock.Text == "0")
-                valueTextBlock.Text = "8";
-            else
-                valueTextBlock.Text += "8";
-        }
-        private void SevenNum(object sender, RoutedEventArgs e)
-        {
-            if (valueTextBlock.Text == "0")
-                valueTextBlock.Text = "7";
-            else
-                valueTextBlock.Text += "7";
-        }
-        private void SixNum(object sender, RoutedEventArgs e)
-        {
-            if (valueTextBlock.Text == "0")
-                valueTextBlock.Text = "6";
-            else
-                valueTextBlock.Text += "6";
-        }
-        private void FiveNum(object sender, RoutedEventArgs e)
-        {
-            if (valueTextBlock.Text == "0")
-                valueTextBlock.Text = "5";
-            else
-                valueTextBlock.Text += "5";
-        }
-        private void FourNum(object sender, RoutedEventArgs e)
-        {
-            if (valueTextBlock.Text == "0")
-                valueTextBlock.Text = "4";
-            else
-                valueTextBlock.Text += "4";
-        }
-        private void ThreeNum(object sender, RoutedEventArgs e)
-        {
-            if (valueTextBlock.Text == "0")
-                valueTextBlock.Text = "3";
-            else
-                valueTextBlock.Text += "3";
-        }
-        private void TwoNum(object sender, RoutedEventArgs e)
-        {
-            if (valueTextBlock.Text == "0")
-                valueTextBlock.Text = "2";
-            else
-                valueTextBlock.Text += "2";
-        }
-        private void OneNum(object sender, RoutedEventArgs e)
-        {
-            if (valueTextBlock.Text == "0")
-                valueTextBlock.Text = "1";
-            else
-                valueTextBlock.Text += "1";
-        }
-        private void ZeroNum(object sender, RoutedEventArgs e)
-        {
-            if (valueTextBlock.Text == "0")
-                valueTextBlock.Text = "0";
-            else
-                valueTextBlock.Text += "0";
-        }
-        private void SumNum(object sender, RoutedEventArgs e)
-        {
-            finalExpression += valueTextBlock.Text;
-            finalExpression += '+';
-        }
-        private void ResultNums(object sender, RoutedEventArgs e)
-        {
-            Regex resultExpression = new Regex(@"(\d*)\+(\d)");
-            Match resultMatch = resultExpression.Match(finalExpression);
-
-            if (resultMatch.Success)
-            {
-                int result = Convert.ToInt32(resultMatch.Groups[1]);
-            }
-        }
+ 
     }
 }

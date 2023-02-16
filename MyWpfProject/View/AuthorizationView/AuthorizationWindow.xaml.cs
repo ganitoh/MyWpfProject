@@ -148,21 +148,14 @@ namespace MyWpfProject.View.AuthorizationView
                 reader = command.ExecuteReader();
 
                 while (reader.Read())
-                {
-                    if (reader.GetName(0) == "id")
-                        user.ID = reader.GetInt32(0);
-                    if (reader.GetName(1) == "_name")
-                        user.Name = reader.GetString(1);
-                    if (reader.GetName(2) == "_surname")
-                        user.Surname = reader.GetString(2);
-                    if (reader.GetName(3) == "age")
-                        user.Age = reader.GetInt32(3);
-                    if (reader.GetName(4) == "email")
-                        user.Email = reader.GetString(4);
-                    if (reader.GetName(5) == "_login")
-                        user.Login = reader.GetString(5);
-                    if (reader.GetName(6) == "_password")
-                        user.Password = reader.GetString(6);
+                {  
+                    user.ID = reader.GetInt32(0);
+                    user.Name = reader.GetString(1);
+                    user.Surname = reader.GetString(2);
+                    user.Age = reader.GetInt32(3);
+                    user.Email = reader.GetString(4);
+                    user.Login = reader.GetString(5);
+                    user.Password = reader.GetString(6);
                 }
                 return user;
             }
