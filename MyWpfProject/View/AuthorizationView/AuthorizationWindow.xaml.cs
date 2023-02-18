@@ -7,10 +7,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using MyWpfProject.View.RegistrationView;
-using System.IO;
-using System.Text.RegularExpressions;
-using System.Configuration;
-using System.Diagnostics;
 
 namespace MyWpfProject.View.AuthorizationView
 {
