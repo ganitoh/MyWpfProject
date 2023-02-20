@@ -131,21 +131,13 @@ namespace MyWpfProject {
             return;
             case 6:
             
-            #line 45 "..\..\..\..\View\MainView\MainWindow.xaml"
-            ((System.Windows.Controls.Button)(target)).Click += new System.Windows.RoutedEventHandler(this.ShowMyParserControll);
-            
-            #line default
-            #line hidden
-            return;
-            case 7:
-            
             #line 47 "..\..\..\..\View\MainView\MainWindow.xaml"
             ((System.Windows.Controls.Button)(target)).Click += new System.Windows.RoutedEventHandler(this.SettingsProfileWindowShow);
             
             #line default
             #line hidden
             return;
-            case 8:
+            case 7:
             
             #line 48 "..\..\..\..\View\MainView\MainWindow.xaml"
             ((System.Windows.Controls.Button)(target)).Click += new System.Windows.RoutedEventHandler(this.ExitFromApplication);
@@ -153,7 +145,7 @@ namespace MyWpfProject {
             #line default
             #line hidden
             return;
-            case 9:
+            case 8:
             
             #line 53 "..\..\..\..\View\MainView\MainWindow.xaml"
             ((System.Windows.Controls.Button)(target)).Click += new System.Windows.RoutedEventHandler(this.OpenSidebar);
@@ -161,7 +153,7 @@ namespace MyWpfProject {
             #line default
             #line hidden
             return;
-            case 10:
+            case 9:
             
             #line 57 "..\..\..\..\View\MainView\MainWindow.xaml"
             ((System.Windows.Controls.Button)(target)).Click += new System.Windows.RoutedEventHandler(this.CollapseWindow);
@@ -169,7 +161,7 @@ namespace MyWpfProject {
             #line default
             #line hidden
             return;
-            case 11:
+            case 10:
             
             #line 60 "..\..\..\..\View\MainView\MainWindow.xaml"
             ((System.Windows.Controls.Button)(target)).Click += new System.Windows.RoutedEventHandler(this.ResizeMainWindow);
@@ -177,7 +169,7 @@ namespace MyWpfProject {
             #line default
             #line hidden
             return;
-            case 12:
+            case 11:
             
             #line 63 "..\..\..\..\View\MainView\MainWindow.xaml"
             ((System.Windows.Controls.Button)(target)).Click += new System.Windows.RoutedEventHandler(this.CloseWindow);
@@ -185,10 +177,10 @@ namespace MyWpfProject {
             #line default
             #line hidden
             return;
-            case 13:
+            case 12:
             this.mainContetnControll = ((System.Windows.Controls.ContentControl)(target));
             return;
-            case 14:
+            case 13:
             this.sidebarContentControl = ((System.Windows.Controls.ContentControl)(target));
             return;
             }

@@ -12,9 +12,9 @@ DEBUG;TRACE
 C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\App.xaml
 211341149882
 
-37-1907460174
-231452588019
+361406682849
+21-342424805
 View\AuthorizationView\AuthorizationWindow.xaml;View\MainView\MainWindow.xaml;View\MainView\MyFinanceView\AddPurposeWindow.xaml;View\MainView\MyFinanceView\MyFinanceControl.xaml;View\MainView\MyFinanceView\PurposeInfoControl.xaml;View\MainView\ParserView\ParserControl.xaml;View\MainView\ProfileEditorView\ChangePasswordControl.xaml;View\MainView\ProfileEditorView\ChangePasswordWindow.xaml;View\MainView\ProfileEditorView\SettingsProfileWindow.xaml;View\MainView\ProfileView\ButtonAddPhotoControl.xaml;View\MainView\ProfileView\MyTaskControl.xaml;View\MainView\ProfileView\ProfileControl.xaml;View\MainView\ProfileView\UserPhotoControl.xaml;View\MainView\Sidebar\SidebarControl.xaml;View\MainView\ToDoListView\CreateMyTaskWindow.xaml;View\MainView\ToDoListView\EditMyTaskWindow.xaml;View\MainView\ToDoListView\MyTaskControl.xaml;View\MainView\ToDoListView\ToDoListControl.xaml;View\RegistrationView\FirstPageRegistration.xaml;View\RegistrationView\RegistrationWindow.xaml;View\RegistrationView\SecondPageRegistration.xaml;
 
-False
+True
 
