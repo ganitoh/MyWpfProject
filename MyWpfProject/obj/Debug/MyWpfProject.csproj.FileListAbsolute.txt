@@ -59,3 +59,5 @@ C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\MainVi
 C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\MainView\MyFinanceView\AddPurposeWindow.baml
 C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\MainView\MyFinanceView\PurposeInfoControl.g.cs
 C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\MainView\MyFinanceView\PurposeInfoControl.baml
+C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\MainView\ParserView\ParserControl.g.cs
+C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\MainView\ParserView\ParserControl.baml

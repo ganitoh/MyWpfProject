@@ -11,6 +11,7 @@ using MyWpfProject.View.MainView.ProfileView;
 using MyWpfProject.View.MainView.ToDoListView;
 using MyWpfProject.View.MainView.Sidebar;
 using MyWpfProject.View.AuthorizationView;
+using MyWpfProject.View.MainView.ParserView;
 
 namespace MyWpfProject
 {
@@ -146,7 +147,9 @@ namespace MyWpfProject
         }
         private void ShowProfileContentControll(object sender, RoutedEventArgs e) => mainContetnControll.Content = new ProfileControl(user, myTasks);
         private void ShowToDoListControll(object sender, RoutedEventArgs e) => mainContetnControll.Content = new ToDoListControl(myTasks);
-        private void SettingsProfileWindowShow(object sender, RoutedEventArgs e)
+        private void ShowMyFinanceControll(object sender, RoutedEventArgs e)=> mainContetnControll.Content = new MyFinanceControl(purposes);
+        private void ShowMyParserControll(object sender, RoutedEventArgs e) => mainContetnControll.Content = new ParserControl();
+        private void SettingsProfileWindowShow(object sender, RoutedEventArgs e) 
         {
             if (!SettingsProfileWindow.WindowOpen)
             {
@@ -162,7 +165,6 @@ namespace MyWpfProject
                 };
             }
         }
-        private void ShowMyFinanceControll(object sender, RoutedEventArgs e)=> mainContetnControll.Content = new MyFinanceControl(purposes);
         private void CloseWindow(object sender, RoutedEventArgs e) => this.Close();
         private void CollapseWindow(object sender, RoutedEventArgs e)
         {
@@ -214,6 +216,7 @@ namespace MyWpfProject
             authorization.Show();
             this.Close();
         }
+
     }
 }
 
