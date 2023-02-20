@@ -59,3 +59,17 @@ C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\MainVi
 C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\MainView\MyFinanceView\AddPurposeWindow.baml
 C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\MainView\MyFinanceView\PurposeInfoControl.g.cs
 C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\MainView\MyFinanceView\PurposeInfoControl.baml
+C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\MainView\ParserView\ParserControl.g.cs
+C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\MainView\ParserView\ParserControl.baml
+C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\bin\Debug\AngleSharp.dll
+C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\bin\Debug\System.Buffers.dll
+C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\bin\Debug\System.Memory.dll
+C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\bin\Debug\System.Text.Encoding.CodePages.dll
+C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\bin\Debug\AngleSharp.xml
+C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\bin\Debug\System.Buffers.xml
+C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\bin\Debug\System.Memory.xml
+C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\bin\Debug\System.Text.Encoding.CodePages.xml
