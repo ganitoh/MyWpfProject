@@ -5,6 +5,7 @@ FC:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\View\MainView\MainWi
 FC:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\View\MainView\MyFinanceView\AddPurposeWindow.xaml;;
 FC:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\View\MainView\MyFinanceView\MyFinanceControl.xaml;;
 FC:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\View\MainView\MyFinanceView\PurposeInfoControl.xaml;;
+FC:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\View\MainView\ParserView\controls\NumericUpDown.xaml;;
 FC:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\View\MainView\ParserView\ParserControl.xaml;;
 FC:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\View\MainView\ProfileEditorView\ChangePasswordControl.xaml;;
 FC:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\View\MainView\ProfileEditorView\ChangePasswordWindow.xaml;;
@@ -20,4 +21,5 @@ FC:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\View\MainView\ToDoLi
 FC:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\View\RegistrationView\FirstPageRegistration.xaml;;
 FC:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\View\RegistrationView\RegistrationWindow.xaml;;
 FC:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\View\RegistrationView\SecondPageRegistration.xaml;;
+FC:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\View\MainView\ParserView\controls\PageHeadersControl.xaml;;
 

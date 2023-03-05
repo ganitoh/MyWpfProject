@@ -73,3 +73,8 @@ C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\bin\Debug\System.Memo
 C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\bin\Debug\System.Numerics.Vectors.xml
 C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\bin\Debug\System.Text.Encoding.CodePages.xml
+C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\MainView\ParserView\controls\NumericUpDown.g.cs
+C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\MainView\ParserView\controls\NumericUpDown.baml
+C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\MainView\ParserView\controls\PageHeadersControl.g.cs
+C:\Users\Вадим\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\MainView\ParserView\controls\PageHeadersControl.baml

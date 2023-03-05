@@ -1,14 +1,69 @@
 ﻿<UserControl x:Class="MyWpfProject.View.MainView.ParserView.ParserControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MyWpfProject.View.MainView.ParserView"
+             xmlns:control="clr-namespace:MyWpfProject.View.MainView.ParserView.controls"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="550" d:DesignWidth="800">
     <Grid Background="#1b191c" >
         <Border Margin="10" Background="#333333" CornerRadius="20">
-            
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="70"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="300"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Row="0" Grid.ColumnSpan="2"  Background="#FF673AB7" CornerRadius="20 20 0 0" Margin="0 0 0 5">
+                    <StackPanel Orientation="Horizontal" Margin="10 0 0 0" >
+                        
+                    </StackPanel>
+                </Border>
+                <Border Grid.Row="1" Grid.Column="0"  Background="#FF673AB7" CornerRadius="20" Margin="10">
+                    <Border.Effect>
+                        <DropShadowEffect Color="Black" BlurRadius="15"/>
+                    </Border.Effect>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Image Source="/images/1564529_mechanism_options_settings_configuration_setting_icon.png"  HorizontalAlignment="Left" Margin="10"/>
+                        <Image Source="/images/1564529_mechanism_options_settings_configuration_setting_icon.png"  HorizontalAlignment="Right" Margin="10"/>
+                        <TextBlock  VerticalAlignment="Center" Text="настройки парсера" FontWeight="Bold" HorizontalAlignment="Center" Foreground="White" FontSize="20" />
+                        <TextBlock Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Text="начальная страница" Foreground="White" FontSize="17" FontWeight="DemiBold"  Margin="10"/>
+                        <control:NumericUpDown x:Name="startPoint" Grid.Row="1" Height="50"  Width="90" HorizontalAlignment="Right" Margin="10"/>
+                        <TextBlock Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Text="конечная страница " Foreground="White" FontSize="17" FontWeight="DemiBold" Margin="10"/>
+                        <control:NumericUpDown x:Name="endPoint" Grid.Row="2" Height="50"  Width="90" HorizontalAlignment="Right" Margin="10"/>
+                        <Button Grid.Row="3" Background="white" HorizontalAlignment="Right" Width="90" Margin="10" Content="начать" Foreground="Black" Click="GoWorkParser"/>
+                    </Grid>
+                </Border>
+                <Border Grid.Row="1" Grid.Column="1" Background="#FF673AB7" CornerRadius="20" Margin="10">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="15" Color="Black"/>
+                    </Border.Effect>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition Height="30"/>
+                        </Grid.RowDefinitions>
+                        <ContentControl x:Name="headersParserContentcontroll"/>
+                        <StackPanel x:Name="valuePageStackPanel" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" >
+                            <Button Content="&lt;" Width="40" Height="25" />
+                            <TextBlock x:Name="page" Text="..." Foreground="white" FontSize="15" Margin="5"/>
+                            <Button Content=">" Width="40" Height="25"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+            </Grid>
         </Border>
     </Grid>
 </UserControl>
