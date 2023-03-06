@@ -57,9 +57,9 @@
                         </Grid.RowDefinitions>
                         <ContentControl x:Name="headersParserContentcontroll"/>
                         <StackPanel x:Name="valuePageStackPanel" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" >
-                            <Button Content="&lt;" Width="40" Height="25" />
-                            <TextBlock x:Name="page" Text="..." Foreground="white" FontSize="15" Margin="5"/>
-                            <Button Content=">" Width="40" Height="25"/>
+                            <Button Content="&lt;" Width="40" Height="25" Background="White" Foreground="Black" Click="PreviousPage"/>
+                            <TextBlock x:Name="pageTextBlock" Text="..." Foreground="white" FontSize="15" Margin="5"/>
+                            <Button Content=">" Width="40" Height="25" Background="White" Foreground="Black"  Click="NextPage"/>
                         </StackPanel>
                     </Grid>
                 </Border>

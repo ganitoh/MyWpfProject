@@ -12,12 +12,12 @@ namespace MyWpfProject.View.MainView.ParserView.core
 		public HtmlLoader(IParserSettings settings)
 		{
 			client= new HttpClient();
-			this.url = $"{settings.BaseUrl}/";
+			this.url = $"{settings.BaseUrl}/{settings.Prefix}/";
 		}
 
 		public async Task<string> GetSourceByPage(int id)
 		{
-			var currentUrl = url.Replace("{currentId}",id.ToString());
+			var currentUrl = url.Replace("{CurrentId}",id.ToString());
 			var respone = await client.GetAsync(currentUrl);
 			string source = null;
 

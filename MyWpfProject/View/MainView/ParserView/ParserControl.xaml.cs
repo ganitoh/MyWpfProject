@@ -20,7 +20,9 @@ namespace MyWpfProject.View.MainView.ParserView
     partial class ParserControl : UserControl
     {
         private ParserWorker<string[]> parser;
-        private List<string[]> headersParses = new List<string[]>();
+        private List<string>[] headersParses;
+        private int pageValue = 0;
+
         public ParserControl()
         {
             parser = new ParserWorker<string[]>(new HabraParser());
@@ -38,26 +40,51 @@ namespace MyWpfProject.View.MainView.ParserView
 
         private void StartPoint_Handler(string exceptionMessage) => MessageBox.Show(exceptionMessage);
 
-        private void ParserOnComplited(object obj)
-        {
-            MessageBox.Show("закончил работу");
-        }
         private void ParserOnNewData(object arg1, string[] headers)
         {
-            headersParserContentcontroll.Content = new PageHeadersControl(headers);
+
+            headersParses[pageValue] = headers.ToList(); 
+            pageValue++;
+        }
+        private void ParserOnComplited(object obj)
+        {
+            pageTextBlock.Text = "1";
+            headersParserContentcontroll.Content = new PageHeadersControl(headersParses[0]);
+            pageValue = 1;
         }
 
         private void GoWorkParser(object sender, RoutedEventArgs e)
         {
             if (startPoint.Value <= endPoint.Value)
             {
-                page.Text = startPoint.Value.ToString();
+                headersParses = new List<string>[endPoint.Value];
+
                 parser.ParserSettings = new ParserSettings(startPoint.Value, endPoint.Value);
                 parser.Start();
             }
             else
             {
                 MessageBox.Show("начальная страница должна быть меньше или равна конечной");
+            }
+        }
+
+        private void NextPage(object sender, RoutedEventArgs e)
+        {
+            if (pageValue < headersParses.Length)
+            {
+                pageValue++;
+                headersParserContentcontroll.Content = new PageHeadersControl(headersParses[pageValue-1]);
+                pageTextBlock.Text = $"{Convert.ToInt32(pageTextBlock.Text) + 1}";
+            }
+        }
+
+        private void PreviousPage(object sender, RoutedEventArgs e)
+        {
+            if (pageValue > 0)
+            {
+                pageValue--;
+                headersParserContentcontroll.Content = new PageHeadersControl(headersParses[pageValue-1]);
+                pageTextBlock.Text = $"{Convert.ToInt32(pageTextBlock.Text) - 1}";
             }
         }
     }

@@ -18,7 +18,7 @@ namespace MyWpfProject.View.MainView.ParserView.controls
     partial class PageHeadersControl : UserControl
     {
         List<string> headers = new List<string>();
-        public PageHeadersControl(string[] headers)
+        public PageHeadersControl(List<string> headers)
         {
             this.headers = headers.ToList<String>();
             InitializeComponent();
@@ -27,8 +27,9 @@ namespace MyWpfProject.View.MainView.ParserView.controls
             {
                 Button headerButton = new Button();
                 headerButton.Content = header;
+                headerButton.Margin = new Thickness(5);
 
-
+                headersPanel.Children.Add(headerButton);
 
             }
         }
