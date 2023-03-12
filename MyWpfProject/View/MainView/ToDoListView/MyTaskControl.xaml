@@ -14,19 +14,19 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="300" />
-                    <ColumnDefinition Width="530"/>
-                    <ColumnDefinition Width="150"/>
-                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition  Width="300"/>
                     <ColumnDefinition />
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition  Width="150"/>
                 </Grid.ColumnDefinitions>
-                <Border Grid.Row="0" Grid.ColumnSpan="4" Background="#b7b5fb" Margin="10 0 10 5" CornerRadius="0 0 15 15">
+                <Border Grid.Row="0" Grid.ColumnSpan="4" Background="#391657" Margin="10 0 10 5" CornerRadius="0 0 15 15">
                 </Border>
-                <TextBlock Style="{StaticResource MaterialDesignHeadline1TextBlock }" Text="заголовок" FontSize="14" Foreground="White" Margin="10 0 0 0" Grid.Column="0" HorizontalAlignment="Center"/>
-                <TextBlock Style="{StaticResource MaterialDesignHeadline1TextBlock }" Text="описание" FontSize="14" Foreground="White" Margin="10 0 0 0" Grid.Column="1" HorizontalAlignment="Center"/>
-                <TextBlock Style="{StaticResource MaterialDesignHeadline1TextBlock }" Text="описание" FontSize="14" Foreground="White" Margin="10 0 0 0" Grid.Column="1" HorizontalAlignment="Center"/>
-                <TextBlock Style="{StaticResource MaterialDesignHeadline1TextBlock }" Text="дата создания" FontSize="14" Foreground="White" Margin="10 0 0 0" Grid.Column="2" HorizontalAlignment="Center"/>
-                <TextBlock Style="{StaticResource MaterialDesignHeadline1TextBlock }" Text="дата завершения" FontSize="14" Foreground="White" Margin="10 0 0 0" Grid.Column="3" HorizontalAlignment="Center"/>
+                <TextBlock Style="{StaticResource MaterialDesignHeadline1TextBlock }" Text="заголовок" FontSize="14" Foreground="White" Margin="10 0 0 0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Style="{StaticResource MaterialDesignHeadline1TextBlock }" Text="описание" FontSize="14" Foreground="White" Margin="10 0 0 0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Style="{StaticResource MaterialDesignHeadline1TextBlock }" Text="описание" FontSize="14" Foreground="White" Margin="10 0 0 0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Style="{StaticResource MaterialDesignHeadline1TextBlock }" Text="дата создания" FontSize="14" Foreground="White" Margin="10 0 0 0" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Style="{StaticResource MaterialDesignHeadline1TextBlock }" Text="дата завершения" FontSize="14" Foreground="White" Margin="10 0 0 0" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
                 <TextBlock x:Name="titleTextBlock" Grid.Row="1" Grid.Column="0"  VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="white" FontSize="11"  />
                 <TextBlock x:Name="descriptionTextblock" Grid.Row="1" Grid.Column="1"  VerticalAlignment="Top"  HorizontalAlignment="Left" Margin="10"  Foreground="white" FontSize="11"  />

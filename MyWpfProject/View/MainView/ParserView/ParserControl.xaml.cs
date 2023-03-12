@@ -117,5 +117,13 @@ namespace MyWpfProject.View.MainView.ParserView
 
             headersParserContentcontroll.Content = new PageHeadersControl(searchHeaders);
         }
+
+        private void ResetSearch(object sender, RoutedEventArgs e)
+        {
+            isActiveHeadersSearch = false;
+            pageTextBlock.Text = "1";
+            headersParserContentcontroll.Content = new PageHeadersControl(headersParses[0]);
+            pageValue = 1;
+        }
     }
 }
