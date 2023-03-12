@@ -30,7 +30,6 @@ namespace MyWpfProject.View.MainView.ParserView.controls
                 headerButton.Margin = new Thickness(5);
 
                 headersPanel.Children.Add(headerButton);
-
             }
         }
     }

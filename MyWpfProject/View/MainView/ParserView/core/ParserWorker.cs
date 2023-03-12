@@ -54,7 +54,7 @@ namespace MyWpfProject.View.MainView.ParserView.core
 
 		public void Start()
 		{
-			isActive= true;
+			isActive = true;
 			Worker();
 		}
 		public void Stop()

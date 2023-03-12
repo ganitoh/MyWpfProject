@@ -1,6 +1,5 @@
 using AngleSharp.Html.Dom;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 
 namespace MyWpfProject.View.MainView.ParserView.core

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -21,7 +22,8 @@ namespace MyWpfProject.View.MainView.ParserView
     {
         private ParserWorker<string[]> parser;
         private List<string>[] headersParses;
-        private int pageValue = 0;
+        private int pageValue;
+        private bool isActiveHeadersSearch = false;
 
         public ParserControl()
         {
@@ -55,8 +57,11 @@ namespace MyWpfProject.View.MainView.ParserView
 
         private void GoWorkParser(object sender, RoutedEventArgs e)
         {
+            isActiveHeadersSearch = false;
             if (startPoint.Value <= endPoint.Value)
             {
+                pageValue = 0;
+
                 headersParses = new List<string>[endPoint.Value];
 
                 parser.ParserSettings = new ParserSettings(startPoint.Value, endPoint.Value);
@@ -70,7 +75,7 @@ namespace MyWpfProject.View.MainView.ParserView
 
         private void NextPage(object sender, RoutedEventArgs e)
         {
-            if (pageValue < headersParses.Length)
+            if (pageValue < headersParses.Length && !isActiveHeadersSearch)
             {
                 pageValue++;
                 headersParserContentcontroll.Content = new PageHeadersControl(headersParses[pageValue-1]);
@@ -80,12 +85,37 @@ namespace MyWpfProject.View.MainView.ParserView
 
         private void PreviousPage(object sender, RoutedEventArgs e)
         {
-            if (pageValue > 0)
+            if (pageValue > 1 && !isActiveHeadersSearch)
             {
                 pageValue--;
                 headersParserContentcontroll.Content = new PageHeadersControl(headersParses[pageValue-1]);
                 pageTextBlock.Text = $"{Convert.ToInt32(pageTextBlock.Text) - 1}";
             }
+        }
+
+        private void SearchHeasrs(object sender, RoutedEventArgs e)
+        {
+            isActiveHeadersSearch = true;
+            List<string> searchHeaders = new List<string>();
+            
+            foreach (var pageHeaders in headersParses )
+            {
+                foreach (var header in pageHeaders)
+                {
+                    char[] symbolSeprator = { ' ', ',', ';', ':', '!', '?', '.', '/','"', '@','#','№','$','%','&','(',')','<','>','"'};
+                    string[] words = header.Split(symbolSeprator);
+
+                    for (int i = 0; i < words.Length; i++)
+                    {
+                        if (words[i] == searchHeadersTextBox.Text)
+                        {
+                            searchHeaders.Add(header);
+                        }
+                    }
+                }
+            }
+
+            headersParserContentcontroll.Content = new PageHeadersControl(searchHeaders);
         }
     }
 }

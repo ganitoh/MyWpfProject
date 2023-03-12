@@ -11,7 +11,7 @@ namespace MyWpfProject.View.MainView.ParserView.core
 
 		public HtmlLoader(IParserSettings settings)
 		{
-			client= new HttpClient();
+			client = new HttpClient();
 			this.url = $"{settings.BaseUrl}/{settings.Prefix}/";
 		}
 
