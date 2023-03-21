@@ -56,7 +56,7 @@
                         <control:NumericUpDown x:Name="startPoint" Grid.Row="1" Height="50"  Width="90" HorizontalAlignment="Right" Margin="10"/>
                         <TextBlock Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Text="конечная страница " Foreground="White" FontSize="17" FontWeight="DemiBold" Margin="10"/>
                         <control:NumericUpDown x:Name="endPoint" Grid.Row="2" Height="50"  Width="90" HorizontalAlignment="Right" Margin="10"/>
-                        <Button Grid.Row="3" Background="white" HorizontalAlignment="Right" Width="90" Margin="10" Content="начать" Foreground="Black" Click="GoWorkParser"/>
+                        <Button Grid.Row="3" Background="white" HorizontalAlignment="Right" Width="90" Margin="10" Content="начать" Foreground="Black" Click="GoWorkParserBttClick"/>
                     </Grid>
                 </Border>
                 <Border Grid.Row="1" Grid.Column="1" Background="#FF673AB7" CornerRadius="20" Margin="10">
