@@ -103,18 +103,15 @@ namespace MyWpfProject.View.MainView.ParserView
             {
                 foreach (var header in pageHeaders)
                 {
-                    string verifiedHeader = CheckHeaders(header);
-
-                    if (!(verifiedHeader is null))
-                        searchHeaders.Add(verifiedHeader);
-                    
+                    if (IsCheckHeaders(header))
+                        searchHeaders.Add(header);
                 }
             }
 
             return searchHeaders;
         }
 
-        private string CheckHeaders(string header)
+        private bool IsCheckHeaders(string header)
         {
             char[] symbolSeprator = { ' ', ',', ';', ':', '!', '?', '.', '/', '"', '@', '#', '№', '$', '%', '&', '(', ')', '<', '>' };
             string[] words = header.Split(symbolSeprator);
@@ -122,10 +119,12 @@ namespace MyWpfProject.View.MainView.ParserView
             for (int i = 0; i < words.Length; i++)
             {
                 if (words[i] == searchHeadersTextBox.Text)
-                    return header;
+                    return true;
+                else
+                    return false;
             }
 
-            return null;
+            return false;
         }
 
         private void ResetSearch(object sender, RoutedEventArgs e)
