@@ -84,13 +84,15 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="model\Purpose.cs" />
-    <Compile Include="View\MainView\MyFinanceView\AddPurposeWindow.xaml.cs">
+    <Compile Include="View\AuthorizationView\core\IWorkerDB.cs" />
+    <Compile Include="View\AuthorizationView\core\UserWorkerDB.cs" />
+    <Compile Include="View\MainView\MyPurposeView\AddPurposeWindow.xaml.cs">
       <DependentUpon>AddPurposeWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\MainView\MyFinanceView\MyFinanceControl.xaml.cs">
-      <DependentUpon>MyFinanceControl.xaml</DependentUpon>
+    <Compile Include="View\MainView\MyPurposeView\AllPurposesControl.xaml.cs">
+      <DependentUpon>AllPurposesControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\MainView\MyFinanceView\PurposeInfoControl.xaml.cs">
+    <Compile Include="View\MainView\MyPurposeView\PurposeInfoControl.xaml.cs">
       <DependentUpon>PurposeInfoControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MainView\ParserView\controls\NumericUpDown.xaml.cs">
@@ -176,15 +178,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\MainView\MyFinanceView\AddPurposeWindow.xaml">
+    <Page Include="View\MainView\MyPurposeView\AddPurposeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\MainView\MyFinanceView\MyFinanceControl.xaml">
+    <Page Include="View\MainView\MyPurposeView\AllPurposesControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\MainView\MyFinanceView\PurposeInfoControl.xaml">
+    <Page Include="View\MainView\MyPurposeView\PurposeInfoControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

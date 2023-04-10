@@ -45,8 +45,8 @@ namespace MyWpfProject.View.MainView.MyFinanceView
                     UserId = Properties.Settings.Default.id,
                     Title = titleTextBox.Text,
                     Discription = discriptionTextBox.Text,
-                    FinalAmountMony = Convert.ToInt32(finalAmountMonyTextBox.Text),
-                    CollectedAmountMony = Convert.ToInt32(collectedAmountMonyTextBox.Text),
+                    FinalAmountMoney = Convert.ToInt32(finalAmountMonyTextBox.Text),
+                    CollectedAmountMoney = Convert.ToInt32(collectedAmountMonyTextBox.Text),
                     IsMainPurposes = isMainPurposesCheckBox.IsChecked.Value
                 };
 
@@ -55,8 +55,8 @@ namespace MyWpfProject.View.MainView.MyFinanceView
 
 
                 SqlCommand insertCommand = new SqlCommand(
-                    $"INSERT INTO Purposes (userId,title,_discription,finalAmountMony,collectedAmountMony,isMainPurposes)" +
-                    $" VALUES (N'{purpose.UserId}',N'{purpose.Title}',N'{purpose.Discription}',N'{purpose.FinalAmountMony}',N'{purpose.CollectedAmountMony}' ,N'{purpose.IsMainPurposes}')", dataBase.Connection);
+                    $"INSERT INTO Purposes (userId,title,_description,finalAmountMoney,collectedAmountMoney,isMainPurposes)" +
+                    $" VALUES (N'{purpose.UserId}',N'{purpose.Title}',N'{purpose.Discription}',N'{purpose.FinalAmountMoney}',N'{purpose.CollectedAmountMoney}' ,N'{purpose.IsMainPurposes}')", dataBase.Connection);
                 insertCommand.ExecuteNonQuery();
 
                 purposes.Add(purpose);

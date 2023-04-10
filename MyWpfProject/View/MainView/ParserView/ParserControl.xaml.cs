@@ -35,6 +35,8 @@ namespace MyWpfProject.View.MainView.ParserView
         {
             headersParsesPages[pageValue] = headers.ToList(); 
             pageValue++;
+
+
         }
         private void ParserOnComplited(object obj)
         {
@@ -88,7 +90,7 @@ namespace MyWpfProject.View.MainView.ParserView
             pageTextBlock.Text = $"{Convert.ToInt32(pageTextBlock.Text) - 1}";
         }
 
-        private void SearchHeasrs(object sender, RoutedEventArgs e)
+        private void SearchHeaders(object sender, RoutedEventArgs e)
         {
             isActiveHeadersSearch = true;
 
@@ -113,15 +115,13 @@ namespace MyWpfProject.View.MainView.ParserView
 
         private bool IsCheckHeaders(string header)
         {
-            char[] symbolSeprator = { ' ', ',', ';', ':', '!', '?', '.', '/', '"', '@', '#', '№', '$', '%', '&', '(', ')', '<', '>' };
+            char[] symbolSeprator = { ' ', ',', ';', ':', '!', '?', '.', '/', '"', '@', '№', '$', '%', '&', '(', ')', '<', '>' };
             string[] words = header.Split(symbolSeprator);
 
             for (int i = 0; i < words.Length; i++)
             {
                 if (words[i] == searchHeadersTextBox.Text)
                     return true;
-                else
-                    return false;
             }
 
             return false;

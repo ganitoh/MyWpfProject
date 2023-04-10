@@ -7,13 +7,23 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using MyWpfProject.View.RegistrationView;
+using MyWpfProject.View.AuthorizationView.core;
+using System.Diagnostics;
 
 namespace MyWpfProject.View.AuthorizationView
 {
     public partial class AuthorizationWindow : Window
     {
         public static AuthorizationWindow _AuthorizationWindow { get; set; }
+        private IWorkerDB<User> userWorkerDB;
+        private DB dataBase;
         public AuthorizationWindow()
+        {
+            dataBase = new DB();
+            AuthorizationCheck();
+        }
+
+        private void AuthorizationCheck()
         {
             bool authorization = Properties.Settings.Default.authorization;
 
@@ -27,7 +37,7 @@ namespace MyWpfProject.View.AuthorizationView
                     Email = Properties.Settings.Default.email,
                     Login = Properties.Settings.Default.login,
                     Password = Properties.Settings.Default.password,
-                    Age= Properties.Settings.Default.age,
+                    Age = Properties.Settings.Default.age,
                 };
 
                 MainWindow mainWindow = new MainWindow(user);
@@ -42,7 +52,6 @@ namespace MyWpfProject.View.AuthorizationView
                 AnimationButton();
             }
         }
-
         private void Drag(object sender, RoutedEventArgs e)
         {
             if (Mouse.LeftButton == MouseButtonState.Pressed)
@@ -68,37 +77,59 @@ namespace MyWpfProject.View.AuthorizationView
         }
         private void AuthorizationUsersButton(object sender, RoutedEventArgs e)
         {
+            
+
             if (IsEmptyLinesAunhorizationWindows())
             {
-                DB db = new DB();
-                db.OpenConnection();
 
-                DataTable sqlRequestSelect = new DataTable();
+                userWorkerDB = new UserWorkerDB(dataBase,new User(textBoxLogin.Text,passwordBox.Password));
 
-                SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Users WHERE _login=N'{textBoxLogin.Text}' AND _password=N'{passwordBox.Password}'", db.Connection);
-                adapter.Fill(sqlRequestSelect);
+                User user = userWorkerDB.SelectRequest();
 
-                if (sqlRequestSelect.Rows.Count > 0)
+                if (!(user is null))
                 {
-                    User user = GetUserFromDataBase(textBoxLogin.Text, passwordBox.Password);
-
                     SetUserIfoToconfig(user);
+
+                    Properties.Settings.Default.authorization = true;
+                    Properties.Settings.Default.Save();
 
                     MainWindow mainWindow = new MainWindow(user);
                     mainWindow.Show();
                     this.Close();
-
-
-                    Properties.Settings.Default.authorization = true;
-                    Properties.Settings.Default.Save();
                 }
                 else
                 {
                     MessageBox.Show("пароль или логин введены неверно");
                     passwordBox.Clear();
+
                 }
 
-                db.CloseConnection();
+
+
+
+
+                //DB db = new DB();
+                //db.OpenConnection();
+
+                //DataTable sqlRequestSelect = new DataTable();
+
+                //SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Users WHERE _login=N'{textBoxLogin.Text}' AND _password=N'{passwordBox.Password}'", db.Connection);
+                //adapter.Fill(sqlRequestSelect);
+
+                //if (sqlRequestSelect.Rows.Count > 0)
+                //{
+                //    User user = GetUserFromDataBase(textBoxLogin.Text, passwordBox.Password);
+
+                //    SetUserIfoToconfig(user);
+
+
+
+                //}
+                //else
+                //{
+                //}
+
+                //db.CloseConnection();
             }
         }
         private void SetUserIfoToconfig(User user)

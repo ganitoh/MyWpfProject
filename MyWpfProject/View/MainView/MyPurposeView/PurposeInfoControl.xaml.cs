@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Data.SqlClient;
-using System.Windows.Markup;
+
 
 namespace MyWpfProject.View.MainView.MyFinanceView
 {
@@ -20,13 +20,22 @@ namespace MyWpfProject.View.MainView.MyFinanceView
             this.contentControl = contentControl;
 
             InitializeComponent();
+
+            ShowInfoThisPurposes();
+            BindCalculatorButtonActions();
+        }
+
+        private void ShowInfoThisPurposes()
+        {
             purposeProgressBar.Value = GetPercentOfFinalAmount();
             titileTextBlock.Text = purpose.Title;
             discriptionPurposeTextBlock.Text = purpose.Discription;
             amountLeftTextBlock.Text = $"осталась сумма: {purpose.GetRemainingAmountMony()}";
 
             ProgressFinalAmount();
-
+        }
+        private void BindCalculatorButtonActions()
+        {
             foreach (UIElement item in calcGrid.Children)
             {
                 if (item is Button)
@@ -35,7 +44,6 @@ namespace MyWpfProject.View.MainView.MyFinanceView
                 }
             }
         }
-
         private void Calculate(object sender, RoutedEventArgs e)
         {
             string newSymbolWithPressedBtt = (string)((Button)e.OriginalSource).Content;
@@ -91,21 +99,21 @@ namespace MyWpfProject.View.MainView.MyFinanceView
             }
         }
         async private void ProgressFinalAmount()
-         {
+        {
             await Task.Delay(1000);
-            percentTextBlock.Text = $"{purpose.CollectedAmountMony}/{purpose.FinalAmountMony}";
-         }
-        private int GetPercentOfFinalAmount() => purpose.CollectedAmountMony * 100 / purpose.FinalAmountMony;
+            percentTextBlock.Text = $"{purpose.CollectedAmountMoney}/{purpose.FinalAmountMoney}";
+        }
+        private int GetPercentOfFinalAmount() => Convert.ToInt32(purpose.CollectedAmountMoney * 100 / purpose.FinalAmountMoney);
         private void AddMonyToProgressButton(object sender, RoutedEventArgs e)
         {
-            purpose.CollectedAmountMony += GetAmountMony();
+            purpose.CollectedAmountMoney += GetAmountMony();
             purposeProgressBar.Value = GetPercentOfFinalAmount();
-            percentTextBlock.Text = $"{purpose.CollectedAmountMony}/{purpose.FinalAmountMony}";
+            percentTextBlock.Text = $"{purpose.CollectedAmountMoney}/{purpose.FinalAmountMoney}";
 
             DB dataBase = new DB();
             dataBase.OpenConnection();
 
-            SqlCommand updateCommand = new SqlCommand($"UPDATE Purposes SET collectedAmountMony=N'{purpose.CollectedAmountMony}' WHERE id=N'{purpose.ID}'",dataBase.Connection);
+            SqlCommand updateCommand = new SqlCommand($"UPDATE Purposes SET collectedAmountMoney=N'{purpose.CollectedAmountMoney}' WHERE id=N'{purpose.ID}'",dataBase.Connection);
             updateCommand.ExecuteNonQuery();
 
             dataBase.CloseConnection();

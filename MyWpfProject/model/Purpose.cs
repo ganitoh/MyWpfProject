@@ -11,8 +11,8 @@ namespace MyWpfProject.model
     {
         public int ID { get; set; }
         public int UserId { get; set; }
-        public int FinalAmountMony { get; set; }
-        public int CollectedAmountMony { get; set; }
+        public decimal FinalAmountMoney { get; set; }
+        public decimal CollectedAmountMoney { get; set; }
         public string Title { get; set; }
         public string Discription { get; set; }
         public bool IsMainPurposes { get; set; }
@@ -25,12 +25,13 @@ namespace MyWpfProject.model
             UserId = userId;
             Title = title;
             Discription = discription;
-            FinalAmountMony = amountMony;
-            CollectedAmountMony = collectedAmountMony;
+            FinalAmountMoney = amountMony;
+            CollectedAmountMoney = collectedAmountMony;
+
         }
 
-        public decimal GetCollectedPercentageOfTheAmountMony() => CollectedAmountMony/FinalAmountMony * 100;
-        public decimal GetRemainingAmountMony() => FinalAmountMony - CollectedAmountMony;
+        public decimal GetCollectedPercentageOfTheAmountMony() => CollectedAmountMoney/FinalAmountMoney * 100;
+        public decimal GetRemainingAmountMony() => FinalAmountMoney - CollectedAmountMoney;
 
     }
 }

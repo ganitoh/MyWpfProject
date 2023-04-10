@@ -2,9 +2,9 @@
 FC:\Users\vadik\source\repos\MyWpfProject\MyWpfProject\App.xaml;;
 FC:\Users\vadik\source\repos\MyWpfProject\MyWpfProject\View\AuthorizationView\AuthorizationWindow.xaml;;
 FC:\Users\vadik\source\repos\MyWpfProject\MyWpfProject\View\MainView\MainWindow.xaml;;
-FC:\Users\vadik\source\repos\MyWpfProject\MyWpfProject\View\MainView\MyFinanceView\AddPurposeWindow.xaml;;
-FC:\Users\vadik\source\repos\MyWpfProject\MyWpfProject\View\MainView\MyFinanceView\MyFinanceControl.xaml;;
-FC:\Users\vadik\source\repos\MyWpfProject\MyWpfProject\View\MainView\MyFinanceView\PurposeInfoControl.xaml;;
+FC:\Users\vadik\source\repos\MyWpfProject\MyWpfProject\View\MainView\MyPurposeView\AddPurposeWindow.xaml;;
+FC:\Users\vadik\source\repos\MyWpfProject\MyWpfProject\View\MainView\MyPurposeView\AllPurposesControl.xaml;;
+FC:\Users\vadik\source\repos\MyWpfProject\MyWpfProject\View\MainView\MyPurposeView\PurposeInfoControl.xaml;;
 FC:\Users\vadik\source\repos\MyWpfProject\MyWpfProject\View\MainView\ParserView\controls\NumericUpDown.xaml;;
 FC:\Users\vadik\source\repos\MyWpfProject\MyWpfProject\View\MainView\ParserView\controls\PageHeadersControl.xaml;;
 FC:\Users\vadik\source\repos\MyWpfProject\MyWpfProject\View\MainView\ParserView\ParserControl.xaml;;

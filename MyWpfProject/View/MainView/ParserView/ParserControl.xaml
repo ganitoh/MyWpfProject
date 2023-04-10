@@ -26,7 +26,7 @@
                         </Grid.ColumnDefinitions>
                         <StackPanel Grid.Column="1" Orientation="Horizontal">
                             <TextBox x:Name="searchHeadersTextBox"  Background="White" Width="230" Height="30" Margin="5"  />
-                            <Button Margin="10" Background="White" Width="50" Height="30" Click="SearchHeasrs"  >
+                            <Button Margin="10" Background="White" Width="50" Height="30" Click="SearchHeaders"  >
                                 <Image Source="/images/3844432_magnifier_search_zoom_icon.png"  />
                             </Button>
                             <Button  Background="White" Width="45" Height="30" Click="ResetSearch">

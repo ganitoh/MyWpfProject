@@ -73,8 +73,9 @@ namespace MyWpfProject
                     purpose.UserId = reader.GetInt32(1);
                     purpose.Title = reader.GetString(2);
                     purpose.Discription = reader.GetString(3);
-                    purpose.FinalAmountMony = reader.GetInt32(4);
-                    purpose.CollectedAmountMony = reader.GetInt32(5);
+                    purpose.IsMainPurposes = reader.GetBoolean(4);
+                    purpose.FinalAmountMoney = reader.GetDecimal(5);
+                    purpose.CollectedAmountMoney = reader.GetDecimal(6);
 
                     purposes.Add(purpose);
                 }

@@ -103,9 +103,6 @@ C:\Users\vadik\source\repos\MyWpfProject\MyWpfProject\obj\Debug\MyWpfProject.csp
 C:\Users\vadik\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\MainView\ToDoListView\CreateMyTaskWindow.baml
 C:\Users\vadik\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\AuthorizationView\AuthorizationWindow.g.cs
 C:\Users\vadik\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\MainView\MainWindow.g.cs
-C:\Users\vadik\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\MainView\MyFinanceView\AddPurposeWindow.g.cs
-C:\Users\vadik\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\MainView\MyFinanceView\MyFinanceControl.g.cs
-C:\Users\vadik\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\MainView\MyFinanceView\PurposeInfoControl.g.cs
 C:\Users\vadik\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\MainView\ParserView\controls\NumericUpDown.g.cs
 C:\Users\vadik\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\MainView\ParserView\controls\PageHeadersControl.g.cs
 C:\Users\vadik\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\MainView\ParserView\ParserControl.g.cs
@@ -131,9 +128,6 @@ C:\Users\vadik\source\repos\MyWpfProject\MyWpfProject\obj\Debug\MyWpfProject_Mar
 C:\Users\vadik\source\repos\MyWpfProject\MyWpfProject\obj\Debug\App.baml
 C:\Users\vadik\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\AuthorizationView\AuthorizationWindow.baml
 C:\Users\vadik\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\MainView\MainWindow.baml
-C:\Users\vadik\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\MainView\MyFinanceView\AddPurposeWindow.baml
-C:\Users\vadik\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\MainView\MyFinanceView\MyFinanceControl.baml
-C:\Users\vadik\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\MainView\MyFinanceView\PurposeInfoControl.baml
 C:\Users\vadik\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\MainView\ParserView\controls\NumericUpDown.baml
 C:\Users\vadik\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\MainView\ParserView\controls\PageHeadersControl.baml
 C:\Users\vadik\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\MainView\ParserView\ParserControl.baml
@@ -158,3 +152,9 @@ C:\Users\vadik\source\repos\MyWpfProject\MyWpfProject\obj\Debug\MyWpfProject.csp
 C:\Users\vadik\source\repos\MyWpfProject\MyWpfProject\obj\Debug\MyWpfProject.csproj.CopyComplete
 C:\Users\vadik\source\repos\MyWpfProject\MyWpfProject\obj\Debug\MyWpfProject.exe
 C:\Users\vadik\source\repos\MyWpfProject\MyWpfProject\obj\Debug\MyWpfProject.pdb
+C:\Users\vadik\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\MainView\MyPurposeView\AddPurposeWindow.g.cs
+C:\Users\vadik\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\MainView\MyPurposeView\AllPurposesControl.g.cs
+C:\Users\vadik\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\MainView\MyPurposeView\PurposeInfoControl.g.cs
+C:\Users\vadik\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\MainView\MyPurposeView\AddPurposeWindow.baml
+C:\Users\vadik\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\MainView\MyPurposeView\AllPurposesControl.baml
+C:\Users\vadik\source\repos\MyWpfProject\MyWpfProject\obj\Debug\View\MainView\MyPurposeView\PurposeInfoControl.baml
