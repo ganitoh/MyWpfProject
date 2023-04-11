@@ -1,59 +1,52 @@
 ﻿using MyWpfProject.core.model;
 using MyWpfProject.core.abstraction;
-using System.Data.SqlClient;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-
+using MyWpfProject.core.DataBaseWorkers;
 
 namespace MyWpfProject.View.MainView.ProfileEditorView
 {
     public partial class ChangePasswordControl : UserControl
     {
-        User user;
+        private User user;
         public ChangePasswordControl(User user)
         {
-            InitializeComponent();
-
             this.user = user;
+            InitializeComponent();
         }
         private void ChangePassword(object sender, RoutedEventArgs e)
         {
             string newPassword = passwordBox.Password;
             string repeatNewPassword = repeatPasswordBox.Password;
 
-            if (newPassword == repeatNewPassword)
-            {
-                user.Password = newPassword;
-                ChangePasswordInDataBase(newPassword);
-            }
+            if (newPassword != repeatNewPassword)
+                ShowErrorPassword("пароли не совпадают");
             else if (newPassword == user.Password && repeatNewPassword == user.Password)
-            {
-                passwordBox.ToolTip = "придумайте новый пароль";
-                passwordBox.Background = Brushes.Red;
-
-                repeatPasswordBox.ToolTip = "придумайте новый пароль";
-                repeatPasswordBox.Background = Brushes.Red;
-            }
+                ShowErrorPassword("придумайте новый пароль");
             else
             {
-                passwordBox.ToolTip = "пароли не совпадают";
-                passwordBox.Background = Brushes.Red;
+                user.Password = newPassword;
 
-                repeatPasswordBox.ToolTip = "пароли не совпадают";
-                repeatPasswordBox.Background = Brushes.Red;
+                IWorkerDB<User> userWorkerDB = new UserWorkerDB(user);
+
+                if (userWorkerDB.UpdateRequest())
+                {
+                    MessageBox.Show("пароль изменен");
+                    Window.GetWindow(this).Close();
+                }
+                else
+                    MessageBox.Show("ошибка");
             }
+                
         }
-        private void ChangePasswordInDataBase(string newPassword)
+        private void ShowErrorPassword(string message)
         {
-            DB dataBase = new DB();
-            dataBase.OpenConnection();
+            passwordBox.ToolTip = $"{message}";
+            passwordBox.Background = Brushes.Red;
 
-            SqlCommand updateCommand = new SqlCommand($"UPDATE Users SET _password=N'{newPassword}' WHERE id=N'{user.ID}' ", dataBase.Connection);
-            updateCommand.ExecuteNonQuery();
-
-            dataBase.CloseConnection();
-            Window.GetWindow(this).Close();
+            repeatPasswordBox.ToolTip = $"{message}";
+            repeatPasswordBox.Background = Brushes.Red;
         }
     }
 }

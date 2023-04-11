@@ -15,9 +15,9 @@ namespace MyWpfProject.core.DataBaseWorkers
     {
         private readonly IDataBase dataBase;
         private User user;
-        public UserWorkerDB(IDataBase db, User user)
+        public UserWorkerDB(User user)
         {
-            this.dataBase = db;
+            this.dataBase = new DB();
             this.user = user;
         }
 
@@ -37,7 +37,6 @@ namespace MyWpfProject.core.DataBaseWorkers
             else
                 return null;
         }
-
         private User GetUserFromDataBase(string login, string password)
         {
             dataBase.OpenConnection();
@@ -75,18 +74,35 @@ namespace MyWpfProject.core.DataBaseWorkers
                 dataBase.CloseConnection();
             }
         }
-        public void DeleteRequest()
+        public bool InsertRequest()
         {
-            throw new NotImplementedException();
-        }
+            dataBase.OpenConnection();
+            SqlCommand insertCommand = new SqlCommand($"insert into Users (_name,_surname,age,email,_login,_password) values (N'{user.Name}',N'{user.Surname}',N'{user.Age}',N'{user.Email}',N'{user.Login}',N'{user.Password}')", dataBase.Connection);      
 
-        public void InsertRequest()
+            try
+            {
+                insertCommand.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+        public bool UpdateRequest()
         {
-            throw new NotImplementedException();
+            dataBase.OpenConnection();
+
+            SqlCommand updateCommand = new SqlCommand(
+                $"UPDATE Users SET _name=N'{user.Name}',_surname=N'{user.Surname}',age=N'{user.Age}',email=N'{user.Email}',_login=N'{user.Login}',_password=N'{user.Password}' WHERE id=N'{user.ID}'", dataBase.Connection);
+
+            if (updateCommand.ExecuteNonQuery() > 0)
+                return true;
+      
+            else
+                return false;
         }
-
-
-        public User UpdateRequest()
+        public bool DeleteRequest()
         {
             throw new NotImplementedException();
         }

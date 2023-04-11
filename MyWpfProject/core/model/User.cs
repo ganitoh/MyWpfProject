@@ -4,25 +4,44 @@ namespace MyWpfProject.core.model
 {
     public class User
     {
-        public int ID { get; set; }
+        public int ID { get;  set; }
         public string Name { get; set; }
         public string Surname { get; set; }
         public int Age { get; set; }
-        public string Email { get; set; }
-        public string Login { get; set; }
+        public string Email { get;  set; }
+        public string Login { get;  set; }
         public string Password { get; set; }
+        public string ProfilePhotoFilePath { get; set; }
 
-
+        public User(int id,string name, string surname, int age, string email, string login,string password)
+        {
+            ID = id;
+            Name = name;
+            Surname = surname;
+            Age = age;
+            Email = email;
+            Login = login;
+            Password = password;
+        }
         public User(string login, string password)
         {
             Login = login;
             Password = password;
         }
-
         public User()
         {
             
         }
-        public string ProfilePhotoFilePath { get; set; }
+
+        public void UpdateInfoToUser(User updateData)
+        {
+            ID = updateData.ID;
+            Name = updateData.Name;
+            Surname = updateData.Surname;
+            Age = updateData.Age;
+            Email = updateData.Email;
+            Login = updateData.Login;
+            Password = updateData.Password;
+        }
     }
 }

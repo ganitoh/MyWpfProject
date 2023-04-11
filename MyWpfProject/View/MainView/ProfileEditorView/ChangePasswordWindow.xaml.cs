@@ -9,12 +9,12 @@ namespace MyWpfProject.View.MainView.ProfileEditorView
     {
         private User user;
         public static bool WindowOpen { get; set; } = false;
-        public static ChangePasswordWindow ChangePassword { get; set; }
+        public static ChangePasswordWindow ChangePasswordWin { get; set; }
         public ChangePasswordWindow(User user)
         {
-            InitializeComponent();
             this.user = user;
-            ChangePassword = this;
+            ChangePasswordWin = this;
+            InitializeComponent();
         }
 
         private void CheckoutPassword(object sender, RoutedEventArgs e)
@@ -32,7 +32,7 @@ namespace MyWpfProject.View.MainView.ProfileEditorView
         private void Drag(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             if (Mouse.LeftButton == MouseButtonState.Pressed)
-                ChangePassword.DragMove();
+                ChangePasswordWin.DragMove();
         }
 
         private void CollapseWindow(object sender, RoutedEventArgs e) => this.WindowState = WindowState.Minimized;

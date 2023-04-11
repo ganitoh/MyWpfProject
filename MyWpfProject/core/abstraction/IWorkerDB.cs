@@ -9,8 +9,12 @@ namespace MyWpfProject.core.abstraction
     public interface IWorkerDB<T> where T : class
     {
         T SelectRequest();
-        T UpdateRequest();
-        void InsertRequest();
-        void DeleteRequest();
+        bool UpdateRequest();
+            /// <summary>
+            /// возвращает true если запрос прошел успешно, иначе false
+            /// </summary>
+            /// <returns></returns>
+        bool InsertRequest();
+        bool DeleteRequest();
     }
 }

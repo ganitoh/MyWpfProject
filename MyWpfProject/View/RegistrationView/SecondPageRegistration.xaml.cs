@@ -1,11 +1,10 @@
 ﻿using MyWpfProject.core.model;
 using MyWpfProject.core.abstraction;
 using MyWpfProject.View.AuthorizationView;
-using System.Data.SqlClient;
-using System.Data;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using MyWpfProject.core.DataBaseWorkers;
 
 namespace MyWpfProject.View.RegistrationView
 {
@@ -14,55 +13,40 @@ namespace MyWpfProject.View.RegistrationView
         User user = new User();
         public SecondPageRegistration(User user)
         {
-            InitializeComponent();
             this.user = user;
+            InitializeComponent();
         }
 
         private void AddUserToDataBase(object sender, RoutedEventArgs e)
         {
             if (IsAllLinesCorrectAndShowNotificationtoTheUsers())
             {
-                if (IsLoginUniqueCheck())
+                user.Email = emailTextBox.Text;
+                user.Login = loginTextBox.Text;
+                user.Password = passwordBox.Password;
+
+                if (IsRegistartionUser(new UserWorkerDB(user)))
                 {
-                    user.Email = emailTextBox.Text;
-                    user.Login = loginTextBox.Text;
-                    user.Password = passwordBox.Password;
+                    MessageBox.Show("вы успешно зарегистрировались", "регистрация", MessageBoxButton.OK, MessageBoxImage.Information);
 
-                    DB db = new DB();
-                    db.OpenConnection();
+                    AuthorizationWindow authorizationWindow = new AuthorizationWindow();
+                    authorizationWindow.Show();
 
-                    SqlCommand insertCommand = new SqlCommand($"insert into Users (_name,_surname,age,email,_login,_password) values (N'{user.Name}',N'{user.Surname}',N'{user.Age}',N'{user.Email}',N'{user.Login}',N'{user.Password}')", db.Connection);
-                    if (insertCommand.ExecuteNonQuery() > 0)
-                    {
-                        MessageBox.Show("вы успешно зарегистрировались", "регистрация", MessageBoxButton.OK, MessageBoxImage.Information);
-
-                        AuthorizationWindow authorizationWindow = new AuthorizationWindow();
-                        authorizationWindow.Show();
-
-                        Window.GetWindow(this).Close();
-                    }
-                    else
-                        MessageBox.Show("произошла ошибка");
+                    Window.GetWindow(this).Close();
                 }
                 else
-                    MessageBox.Show(" логин уже занят");
+                {
+                    MessageBox.Show("логин уже занят");
+                }
             }
         }
-        private bool IsLoginUniqueCheck()
+
+        private bool IsRegistartionUser(IWorkerDB<User> workerUserDB)
         {
-            DB dataBase = new DB();
-            dataBase.OpenConnection();
-
-            DataTable table = new DataTable();
-            SqlDataAdapter selectAdapter = new SqlDataAdapter($"SELECT * FROM Users WHERE _login=N'{loginTextBox.Text}' ", dataBase.Connection);
-
-            selectAdapter.Fill(table);
-
-            if (table.Rows.Count > 0)
-                return false;
-
-            else
+            if (workerUserDB.InsertRequest())
                 return true;
+            else
+                return false;
         }
         private bool IsAllLinesCorrectAndShowNotificationtoTheUsers()
         {

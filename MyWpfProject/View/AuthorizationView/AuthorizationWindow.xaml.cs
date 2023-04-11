@@ -1,8 +1,6 @@
 ﻿using MyWpfProject.core.model;
 using MyWpfProject.core.abstraction;
 using System;
-using System.Data.SqlClient;
-using System.Data;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -17,10 +15,8 @@ namespace MyWpfProject.View.AuthorizationView
     {
         public static AuthorizationWindow _AuthorizationWindow { get; set; }
         private IWorkerDB<User> userWorkerDB;
-        private IDataBase dataBase;
         public AuthorizationWindow()
         {
-            dataBase = new DB();
             AuthorizationCheck();
         }
 
@@ -82,7 +78,7 @@ namespace MyWpfProject.View.AuthorizationView
             if (IsEmptyLinesAunhorizationWindows())
             {
                 User checkUser = new User(textBoxLogin.Text, passwordBox.Password);
-                UserIsCorrectAndAuthorization(new UserWorkerDB(dataBase,checkUser));
+                UserIsCorrectAndAuthorization(new UserWorkerDB(checkUser));
             }
         }
         private void UserIsCorrectAndAuthorization(IWorkerDB<User> workerDB)
