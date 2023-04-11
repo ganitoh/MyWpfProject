@@ -1,5 +1,5 @@
 ﻿using Microsoft.Win32;
-using MyWpfProject.model;
+using MyWpfProject.core.model;
 using System.Windows;
 using System.Windows.Controls;
 

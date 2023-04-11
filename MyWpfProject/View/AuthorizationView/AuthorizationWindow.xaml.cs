@@ -1,4 +1,5 @@
-﻿using MyWpfProject.model;
+﻿using MyWpfProject.core.model;
+using MyWpfProject.core.abstraction;
 using System;
 using System.Data.SqlClient;
 using System.Data;
@@ -7,8 +8,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using MyWpfProject.View.RegistrationView;
-using MyWpfProject.View.AuthorizationView.core;
-using System.Diagnostics;
+using MyWpfProject.core.DataBaseWorkers;
+
 
 namespace MyWpfProject.View.AuthorizationView
 {
@@ -16,7 +17,7 @@ namespace MyWpfProject.View.AuthorizationView
     {
         public static AuthorizationWindow _AuthorizationWindow { get; set; }
         private IWorkerDB<User> userWorkerDB;
-        private DB dataBase;
+        private IDataBase dataBase;
         public AuthorizationWindow()
         {
             dataBase = new DB();
@@ -78,58 +79,34 @@ namespace MyWpfProject.View.AuthorizationView
         private void AuthorizationUsersButton(object sender, RoutedEventArgs e)
         {
             
-
             if (IsEmptyLinesAunhorizationWindows())
             {
+                User checkUser = new User(textBoxLogin.Text, passwordBox.Password);
+                UserIsCorrectAndAuthorization(new UserWorkerDB(dataBase,checkUser));
+            }
+        }
+        private void UserIsCorrectAndAuthorization(IWorkerDB<User> workerDB)
+        {
+            userWorkerDB = workerDB;
 
-                userWorkerDB = new UserWorkerDB(dataBase,new User(textBoxLogin.Text,passwordBox.Password));
+            User user = userWorkerDB.SelectRequest();
 
-                User user = userWorkerDB.SelectRequest();
+            if (!(user is null))
+            {
+                SetUserIfoToconfig(user);
 
-                if (!(user is null))
-                {
-                    SetUserIfoToconfig(user);
+                Properties.Settings.Default.authorization = true;
+                Properties.Settings.Default.Save();
 
-                    Properties.Settings.Default.authorization = true;
-                    Properties.Settings.Default.Save();
+                MainWindow mainWindow = new MainWindow(user);
+                mainWindow.Show();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("пароль или логин введены неверно");
+                passwordBox.Clear();
 
-                    MainWindow mainWindow = new MainWindow(user);
-                    mainWindow.Show();
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show("пароль или логин введены неверно");
-                    passwordBox.Clear();
-
-                }
-
-
-
-
-
-                //DB db = new DB();
-                //db.OpenConnection();
-
-                //DataTable sqlRequestSelect = new DataTable();
-
-                //SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Users WHERE _login=N'{textBoxLogin.Text}' AND _password=N'{passwordBox.Password}'", db.Connection);
-                //adapter.Fill(sqlRequestSelect);
-
-                //if (sqlRequestSelect.Rows.Count > 0)
-                //{
-                //    User user = GetUserFromDataBase(textBoxLogin.Text, passwordBox.Password);
-
-                //    SetUserIfoToconfig(user);
-
-
-
-                //}
-                //else
-                //{
-                //}
-
-                //db.CloseConnection();
             }
         }
         private void SetUserIfoToconfig(User user)
@@ -160,44 +137,6 @@ namespace MyWpfProject.View.AuthorizationView
             else
                 return true;
 
-        }
-        private User GetUserFromDataBase(string login, string password)
-        {
-            DB db = new DB();
-            db.OpenConnection();
-
-            SqlCommand command = new SqlCommand($"SELECT * FROM Users WHERE _login=N'{login}' AND _password=N'{password}'", db.Connection);
-            SqlDataReader reader = null;
-            User user = new User();
-
-            try
-            {
-                reader = command.ExecuteReader();
-
-                while (reader.Read())
-                {  
-                    user.ID = reader.GetInt32(0);
-                    user.Name = reader.GetString(1);
-                    user.Surname = reader.GetString(2);
-                    user.Age = reader.GetInt32(3);
-                    user.Email = reader.GetString(4);
-                    user.Login = reader.GetString(5);
-                    user.Password = reader.GetString(6);
-                }
-                return user;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                return null;
-            }
-            finally
-            {
-                if (reader != null && !reader.IsClosed)
-                    reader.Close();
-
-                db.CloseConnection();
-            }
         }
         private bool IsEmptyLine(string str)
         {

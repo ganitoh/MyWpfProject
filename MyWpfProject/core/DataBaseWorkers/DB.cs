@@ -1,9 +1,8 @@
-﻿using MyWpfProject.intarfaces;
-using System.Data.SqlClient;
+﻿using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
 
-namespace MyWpfProject.model
+namespace MyWpfProject.core.abstraction
 {
     public class DB : IDataBase
     {

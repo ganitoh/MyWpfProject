@@ -1,6 +1,6 @@
 ﻿using System.Data.SqlClient;
 
-namespace MyWpfProject.intarfaces
+namespace MyWpfProject.core.abstraction
 {
     internal interface IDataBase
     {

@@ -1,4 +1,5 @@
-﻿using MyWpfProject.model;
+﻿using MyWpfProject.core.model;
+using MyWpfProject.core.abstraction;
 using System;
 using System.Collections.Generic;
 using System.Linq;

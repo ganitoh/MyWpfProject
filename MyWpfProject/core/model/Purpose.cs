@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media.Animation;
 
-namespace MyWpfProject.model
+namespace MyWpfProject.core.model
 {
     public class Purpose
     {

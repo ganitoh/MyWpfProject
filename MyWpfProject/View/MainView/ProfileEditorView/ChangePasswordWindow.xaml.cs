@@ -1,4 +1,4 @@
-﻿using MyWpfProject.model;
+﻿using MyWpfProject.core.model;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Input;

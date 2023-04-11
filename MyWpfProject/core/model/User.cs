@@ -1,6 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 
-namespace MyWpfProject.model
+namespace MyWpfProject.core.model
 {
     public class User
     {

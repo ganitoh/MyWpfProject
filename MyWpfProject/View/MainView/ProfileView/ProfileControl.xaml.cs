@@ -1,4 +1,4 @@
-﻿using MyWpfProject.model;
+﻿using MyWpfProject.core.model;
 using System;
 using System.Collections.Generic;
 using System.Windows.Controls;

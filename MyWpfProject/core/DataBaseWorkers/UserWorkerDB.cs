@@ -1,17 +1,15 @@
-﻿using MyWpfProject.intarfaces;
-using MyWpfProject.model;
+﻿using MyWpfProject.core.model;
+using MyWpfProject.core.abstraction;
 using System;
-using System.CodeDom;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Controls;
 using System.Windows;
 
-namespace MyWpfProject.View.AuthorizationView.core
+namespace MyWpfProject.core.DataBaseWorkers
 {
     internal class UserWorkerDB : IWorkerDB<User>
     {
@@ -37,7 +35,7 @@ namespace MyWpfProject.View.AuthorizationView.core
             if (sqlRequestSelect.Rows.Count > 0)
                 return GetUserFromDataBase(user.Login, user.Password);
             else
-               return null;
+                return null;
         }
 
         private User GetUserFromDataBase(string login, string password)

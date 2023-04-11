@@ -1,4 +1,5 @@
-﻿using MyWpfProject.model;
+﻿using MyWpfProject.core.model;
+using MyWpfProject.core.abstraction;
 using System.Data.SqlClient;
 using System.Windows;
 using System.Windows.Controls;
