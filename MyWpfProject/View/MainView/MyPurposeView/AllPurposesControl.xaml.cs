@@ -1,12 +1,10 @@
 ﻿using MyWpfProject.core.model;
 using MyWpfProject.core.abstraction;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using MyWpfProject.core.DataBaseWorkers;
-using System.Windows.Documents;
 
 namespace MyWpfProject.View.MainView.MyFinanceView
 {
