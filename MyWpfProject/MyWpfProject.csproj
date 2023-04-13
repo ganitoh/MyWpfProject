@@ -91,6 +91,7 @@
     <Compile Include="core\DataBaseWorkers\PurposeWorkerDB.cs" />
     <Compile Include="core\DataBaseWorkers\UserWorkerDB.cs" />
     <Compile Include="core\model\Purpose.cs" />
+    <Compile Include="logger\ILogger.cs" />
     <Compile Include="View\MainView\MyPurposeView\AddPurposeWindow.xaml.cs">
       <DependentUpon>AddPurposeWindow.xaml</DependentUpon>
     </Compile>
