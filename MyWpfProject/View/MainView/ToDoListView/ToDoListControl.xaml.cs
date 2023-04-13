@@ -11,10 +11,11 @@ namespace MyWpfProject.View.MainView.ToDoListView
         private List<MyTask> myTasks;
         public ToDoListControl(List<MyTask> myTasks)
         {
+            this.myTasks = myTasks ?? new List<MyTask>();
+
             InitializeComponent();
 
-            this.myTasks = myTasks;
-            foreach (MyTask myTask in myTasks)
+            foreach (MyTask myTask in this.myTasks)
                 tasksStackPanel.Children.Add(new MyTaskControl(myTask, tasksStackPanel, myTasks));
         }
         private void AddMyTask(object sender, RoutedEventArgs e)

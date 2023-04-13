@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Windows;
 using System.Windows.Controls;
+using MyWpfProject.core.DataBaseWorkers;
 
 namespace MyWpfProject.View.MainView.ToDoListView
 {
@@ -39,17 +40,16 @@ namespace MyWpfProject.View.MainView.ToDoListView
         }
         private void DeleteTaskButtonClick(object sender, RoutedEventArgs e)
         {
-            DB dataBase = new DB();
-            dataBase.OpenConnection();
-
-            SqlCommand deleteCommand = new SqlCommand($"DELETE FROM MyTasks WHERE id=N'{myTask.ID}'", dataBase.Connection);
-            if (deleteCommand.ExecuteNonQuery() > 0)
+            IDeleteSqlRequest<int> deleteRequest = new MyTaskWorkerDB();
+            if (deleteRequest.DeleteRequest(myTask.ID))
             {
                 stackPanel.Children.Remove(this);
                 myTasks.Remove(myTask);
             }
-
-            dataBase.CloseConnection();
+            else
+            {
+                MessageBox.Show("не удалось удалить");
+            }
         }
     }
 }

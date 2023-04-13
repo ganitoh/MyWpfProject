@@ -83,7 +83,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="core\abstraction\IWorkerDB.cs" />
+    <Compile Include="core\abstraction\IDeleteSqlRequest.cs" />
+    <Compile Include="core\abstraction\IIinsertSqlRequest.cs" />
+    <Compile Include="core\abstraction\ISelectSqlRequest.cs" />
+    <Compile Include="core\abstraction\IUpdateSQlRequest.cs" />
+    <Compile Include="core\DataBaseWorkers\MyTaskWorkerDB.cs" />
+    <Compile Include="core\DataBaseWorkers\PurposeWorkerDB.cs" />
     <Compile Include="core\DataBaseWorkers\UserWorkerDB.cs" />
     <Compile Include="core\model\Purpose.cs" />
     <Compile Include="View\MainView\MyPurposeView\AddPurposeWindow.xaml.cs">

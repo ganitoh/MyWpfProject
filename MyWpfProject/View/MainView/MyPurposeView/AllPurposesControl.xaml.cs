@@ -5,6 +5,8 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using MyWpfProject.core.DataBaseWorkers;
+using System.Windows.Documents;
 
 namespace MyWpfProject.View.MainView.MyFinanceView
 {
@@ -16,11 +18,11 @@ namespace MyWpfProject.View.MainView.MyFinanceView
 
         public MyFinanceControl(List<Purpose> purposes)
         {
+            this.purposes = purposes ?? new List<Purpose>();
+
             InitializeComponent();
-
-            this.purposes = purposes;
-
-            foreach (Purpose purpose in purposes)
+            
+            foreach (Purpose purpose in this.purposes)
                 AddPurposeShowInfoButton(purpose);          
         }
         private void AddPurposeShowInfoButton(Purpose purpose)
@@ -62,25 +64,20 @@ namespace MyWpfProject.View.MainView.MyFinanceView
                 MessageBoxResult result = MessageBox.Show("удалить цель", "information", MessageBoxButton.YesNo, MessageBoxImage.Information);
 
                 if (result == MessageBoxResult.Yes)
-                {
-                    purposes.Remove(removePurpose);
-                    mainStackPanel.Children.Remove(removeButton);
-                    mainContentControl.Content = null;
-
-                    RemovePurposeFromDB(removePurpose);
-                }
+                    RemovePurposeFromDBAndFromApp();
             }
         }
 
-        private void RemovePurposeFromDB(Purpose removePurpose)
+        private void RemovePurposeFromDBAndFromApp()
         {
-            DB dataBase = new DB();
-            dataBase.OpenConnection();
+            IDeleteSqlRequest<int> deleteSqlRequest = new PurposeWorkerDB();
 
-            SqlCommand removeСommand = new SqlCommand($"DELETE FROM Purposes WHERE id=N'{removePurpose.ID}'", dataBase.Connection);
-            removeСommand.ExecuteNonQuery();
-
-            dataBase.CloseConnection();
+            if (deleteSqlRequest.DeleteRequest(removePurpose.ID))
+            {
+                purposes.Remove(removePurpose);
+                mainStackPanel.Children.Remove(removeButton);
+                mainContentControl.Content = null;
+            }
         }
     }
 }

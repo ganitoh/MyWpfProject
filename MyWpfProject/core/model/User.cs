@@ -13,18 +13,12 @@ namespace MyWpfProject.core.model
         public string Password { get; set; }
         public string ProfilePhotoFilePath { get; set; }
 
-        public User(int id,string name, string surname, int age, string email, string login,string password)
+        public User(string name, string surname, int age, string email, string login,string password)
         {
-            ID = id;
             Name = name;
             Surname = surname;
             Age = age;
             Email = email;
-            Login = login;
-            Password = password;
-        }
-        public User(string login, string password)
-        {
             Login = login;
             Password = password;
         }

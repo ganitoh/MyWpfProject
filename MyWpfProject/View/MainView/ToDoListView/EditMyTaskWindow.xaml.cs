@@ -4,6 +4,8 @@ using System;
 using System.Data.SqlClient;
 using System.Windows;
 using System.Windows.Input;
+using System.ComponentModel;
+using MyWpfProject.core.DataBaseWorkers;
 
 namespace MyWpfProject.View.MainView.ToDoListView
 {
@@ -34,16 +36,13 @@ namespace MyWpfProject.View.MainView.ToDoListView
                 myTask.Description = descriptionTextBox.Text;
                 myTask.Deadline = (DateTime)deadLine.SelectedDate;
 
-                DB dataBase = new DB();
-                dataBase.OpenConnection();
-
-                SqlCommand updateCommand = new SqlCommand($"SET LANGUAGE russian UPDATE MyTasks SET title=N'{myTask.Title}', _description=N'{myTask.Description}', deadline=N'{myTask.Deadline}' WHERE id = N'{myTask.ID}'  ", dataBase.Connection);
-                if (updateCommand.ExecuteNonQuery() > 0)
+                IUpdateSQlRequest<MyTask> updateRequest = new MyTaskWorkerDB();
+                updateRequest.Id = myTask.ID;
+                if (updateRequest.UpdateRequest(myTask))
+                {
                     MessageBox.Show("данные изменины");
-
-                dataBase.CloseConnection();
-
-                this.Close();
+                    this.Close();
+                }
             }
         }
         private bool IsChangedFields() => titleTextBox.Text == myTask.Title && descriptionTextBox.Text == myTask.Description && deadLine.SelectedDate == myTask.Deadline;

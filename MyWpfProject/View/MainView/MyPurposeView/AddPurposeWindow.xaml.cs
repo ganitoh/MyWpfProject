@@ -3,18 +3,12 @@ using MyWpfProject.core.abstraction;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Data.SqlClient;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.Runtime.InteropServices;
+using MyWpfProject.core.DataBaseWorkers;
 
 namespace MyWpfProject.View.MainView.MyFinanceView
 {
@@ -51,21 +45,16 @@ namespace MyWpfProject.View.MainView.MyFinanceView
                     IsMainPurposes = isMainPurposesCheckBox.IsChecked.Value
                 };
 
-                DB dataBase = new DB();
-                dataBase.OpenConnection();
-
-
-                SqlCommand insertCommand = new SqlCommand(
-                    $"INSERT INTO Purposes (userId,title,_description,finalAmountMoney,collectedAmountMoney,isMainPurposes)" +
-                    $" VALUES (N'{purpose.UserId}',N'{purpose.Title}',N'{purpose.Discription}',N'{purpose.FinalAmountMoney}',N'{purpose.CollectedAmountMoney}' ,N'{purpose.IsMainPurposes}')", dataBase.Connection);
-                insertCommand.ExecuteNonQuery();
-
-                purposes.Add(purpose);
+                IIinsertSqlRequest<Purpose> insertRequest = new PurposeWorkerDB();
+                if (insertRequest.InsertRequest(purpose))
+                {
+                    purposes.Add(purpose);
+                    MessageBox.Show("цель добавлена");
+                }
 
                 this.Close();
             }
         }
-
         private bool IsAllFieldsCorrect()
         {
             int countError = 0;

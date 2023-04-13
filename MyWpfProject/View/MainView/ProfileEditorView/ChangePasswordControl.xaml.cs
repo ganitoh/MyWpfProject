@@ -28,9 +28,10 @@ namespace MyWpfProject.View.MainView.ProfileEditorView
             {
                 user.Password = newPassword;
 
-                IWorkerDB<User> userWorkerDB = new UserWorkerDB(user);
+                IUpdateSQlRequest<User> updateRequest = new UserWorkerDB();
+                updateRequest.Id = user.ID;
 
-                if (userWorkerDB.UpdateRequest())
+                if (updateRequest.UpdateRequest(user))
                 {
                     MessageBox.Show("пароль изменен");
                     Window.GetWindow(this).Close();

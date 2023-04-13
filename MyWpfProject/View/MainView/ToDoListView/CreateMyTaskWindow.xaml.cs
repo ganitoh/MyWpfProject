@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Windows;
 using System.Windows.Input;
+using MyWpfProject.core.DataBaseWorkers;
 
 namespace MyWpfProject.View.MainView.ToDoListView
 {
@@ -24,45 +25,14 @@ namespace MyWpfProject.View.MainView.ToDoListView
             int userId = Properties.Settings.Default.id;
             MyTask myTask = new MyTask(userId,(DateTime)deadLine.SelectedDate, descriptionTextBox.Text, titleTextBox.Text);
 
-            DB dataBase = new DB();
-            dataBase.OpenConnection();
+            IIinsertSqlRequest<MyTask> insertRequest = new MyTaskWorkerDB();
 
-            SqlCommand command = new SqlCommand($"SET LANGUAGE russian INSERT INTO MyTasks (userId,title,_description,dateCreate,deadline) VALUES (N'{myTask.UserId}',N'{myTask.Title}',N'{myTask.Description}','{myTask.DateCreate}','{myTask.Deadline}')", dataBase.Connection);
-            command.ExecuteNonQuery();
-
-            //id к элементу добаляется только в самой базе данных, и для того что бы достать id используем метод GetIdMyTask(dataBase)
-            myTask.ID = GetIdMyTask(dataBase);
-
-            myTasks.Add(myTask);
-
-            dataBase.CloseConnection();
-
-            this.Close();
+            if (insertRequest.InsertRequest(myTask))
+            {
+                myTasks.Add(myTask);
+                this.Close();
+            }
         }
-        private int GetIdMyTask(DB dataBase)
-        {
-            SqlCommand command = new SqlCommand("SELECT * FROM MyTasks ORDER BY id DESC ", dataBase.Connection);
-            SqlDataReader reader = null;
-
-            try
-            {
-                reader = command.ExecuteReader();
-
-                if (reader.Read())
-                    return (int)reader["id"];
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                if (reader != null && !reader.IsClosed)
-                    reader.Close();
-            }
-            return 0;
-        }
-
         private void Drag(object sender, MouseButtonEventArgs e)
         {
             if (Mouse.LeftButton == MouseButtonState.Pressed)

@@ -11,8 +11,8 @@ namespace MyWpfProject.core.model
     {
         public int ID { get; set; }
         public int UserId { get; set; }
-        public decimal FinalAmountMoney { get; set; }
-        public decimal CollectedAmountMoney { get; set; }
+        public int FinalAmountMoney { get; set; }
+        public int CollectedAmountMoney { get; set; }
         public string Title { get; set; }
         public string Discription { get; set; }
         public bool IsMainPurposes { get; set; }

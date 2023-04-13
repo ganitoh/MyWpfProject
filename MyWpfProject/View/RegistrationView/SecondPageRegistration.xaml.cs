@@ -25,7 +25,9 @@ namespace MyWpfProject.View.RegistrationView
                 user.Login = loginTextBox.Text;
                 user.Password = passwordBox.Password;
 
-                if (IsRegistartionUser(new UserWorkerDB(user)))
+                IIinsertSqlRequest<User> insertRequest = new UserWorkerDB();
+
+                if (insertRequest.InsertRequest(user))
                 {
                     MessageBox.Show("вы успешно зарегистрировались", "регистрация", MessageBoxButton.OK, MessageBoxImage.Information);
 
@@ -39,14 +41,6 @@ namespace MyWpfProject.View.RegistrationView
                     MessageBox.Show("логин уже занят");
                 }
             }
-        }
-
-        private bool IsRegistartionUser(IWorkerDB<User> workerUserDB)
-        {
-            if (workerUserDB.InsertRequest())
-                return true;
-            else
-                return false;
         }
         private bool IsAllLinesCorrectAndShowNotificationtoTheUsers()
         {

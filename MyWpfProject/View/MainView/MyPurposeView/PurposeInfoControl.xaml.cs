@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Data.SqlClient;
-
+using MyWpfProject.View.MainView.ParserView.core;
+using MyWpfProject.core.DataBaseWorkers;
 
 namespace MyWpfProject.View.MainView.MyFinanceView
 {
@@ -44,6 +45,11 @@ namespace MyWpfProject.View.MainView.MyFinanceView
                     ((Button)item).Click += Calculate;
                 }
             }
+        }
+        async private void ProgressFinalAmount()
+        {
+            await Task.Delay(1000);
+            percentTextBlock.Text = $"{purpose.CollectedAmountMoney}/{purpose.FinalAmountMoney}";
         }
         private void Calculate(object sender, RoutedEventArgs e)
         {
@@ -99,40 +105,26 @@ namespace MyWpfProject.View.MainView.MyFinanceView
                 valueTextBlock.Text += newSymbol;
             }
         }
-        async private void ProgressFinalAmount()
-        {
-            await Task.Delay(1000);
-            percentTextBlock.Text = $"{purpose.CollectedAmountMoney}/{purpose.FinalAmountMoney}";
-        }
-        private int GetPercentOfFinalAmount() => Convert.ToInt32(purpose.CollectedAmountMoney * 100 / purpose.FinalAmountMoney);
+        private int GetPercentOfFinalAmount() => purpose.CollectedAmountMoney * 100 / purpose.FinalAmountMoney;
         private void AddMonyToProgressButton(object sender, RoutedEventArgs e)
         {
             purpose.CollectedAmountMoney += GetAmountMony();
             purposeProgressBar.Value = GetPercentOfFinalAmount();
             percentTextBlock.Text = $"{purpose.CollectedAmountMoney}/{purpose.FinalAmountMoney}";
 
-            DB dataBase = new DB();
-            dataBase.OpenConnection();
+            IUpdateSQlRequest<Purpose> updateRequest = new PurposeWorkerDB();
 
-            SqlCommand updateCommand = new SqlCommand($"UPDATE Purposes SET collectedAmountMoney=N'{purpose.CollectedAmountMoney}' WHERE id=N'{purpose.ID}'",dataBase.Connection);
-            updateCommand.ExecuteNonQuery();
-
-            dataBase.CloseConnection();
-            valueMonyTextBox.Clear();
-
-            amountLeftTextBlock.Text = $"осталась сумма: {purpose.GetRemainingAmountMony()}";
+            if (updateRequest.UpdateRequest(purpose))
+            {
+                valueMonyTextBox.Clear();
+                amountLeftTextBlock.Text = $"осталась сумма: {purpose.GetRemainingAmountMony()}";
+            }
         }
         private int GetAmountMony()
         {
-            try
-            {
-                return Convert.ToInt32(valueMonyTextBox.Text);
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("неверный формат");
-                return 0;
-            }
+            int result;
+            int.TryParse(valueMonyTextBox.Text,out result);
+            return result;
         }
  
     }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,10 @@ namespace MyWpfProject.core.model
         public string Description { get; set; }
         public string Title { get; set; }
 
+        public MyTask(int userId)
+        {
+            UserId = userId;
+        }
         public MyTask(int userId,DateTime deadLine, string taskText, string title)
         {
             this.UserId = userId;

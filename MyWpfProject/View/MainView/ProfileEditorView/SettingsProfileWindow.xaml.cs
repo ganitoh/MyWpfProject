@@ -33,10 +33,10 @@ namespace MyWpfProject.View.MainView.ProfileEditorView
         {
             if (IsChangedFields())
             {
-                User updateUser = new User(user.ID,nameTextBox.Text,surnameTextBox.Text,Convert.ToInt32(ageTextBox.Text),emailTextBox.Text,loginTextBox.Text,user.Password);
-                IWorkerDB<User> userWorkerDB = new UserWorkerDB(updateUser);
+                User updateUser = new User(nameTextBox.Text,surnameTextBox.Text,Convert.ToInt32(ageTextBox.Text),emailTextBox.Text,loginTextBox.Text,user.Password);
+                IUpdateSQlRequest<User> updateRequest = new UserWorkerDB();
 
-                if (userWorkerDB.UpdateRequest())
+                if (updateRequest.UpdateRequest(user))
                 {
                     user.UpdateInfoToUser(updateUser);
                     MessageBox.Show("данные изменены");

@@ -14,7 +14,6 @@ namespace MyWpfProject.View.AuthorizationView
     public partial class AuthorizationWindow : Window
     {
         public static AuthorizationWindow _AuthorizationWindow { get; set; }
-        private IWorkerDB<User> userWorkerDB;
         public AuthorizationWindow()
         {
             AuthorizationCheck();
@@ -73,19 +72,15 @@ namespace MyWpfProject.View.AuthorizationView
             this.Close();
         }
         private void AuthorizationUsersButton(object sender, RoutedEventArgs e)
-        {
-            
+        {    
             if (IsEmptyLinesAunhorizationWindows())
-            {
-                User checkUser = new User(textBoxLogin.Text, passwordBox.Password);
-                UserIsCorrectAndAuthorization(new UserWorkerDB(checkUser));
-            }
+                UserIsCorrectAndAuthorization(); 
         }
-        private void UserIsCorrectAndAuthorization(IWorkerDB<User> workerDB)
+        private void UserIsCorrectAndAuthorization()
         {
-            userWorkerDB = workerDB;
+            ISelectSqlRequest<User> selectRequest = new UserWorkerDB(textBoxLogin.Text, passwordBox.Password);
 
-            User user = userWorkerDB.SelectRequest();
+            User user = selectRequest.SelectRequest();
 
             if (!(user is null))
             {
