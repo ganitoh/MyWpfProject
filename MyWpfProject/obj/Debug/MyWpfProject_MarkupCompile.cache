@@ -12,9 +12,9 @@ DEBUG;TRACE
 C:\Users\vadik\source\repos\MyWpfProject\MyWpfProject\App.xaml
 23-1702197282
 
-50227591215
+51-1854497403
 2358851249
 View\AuthorizationView\AuthorizationWindow.xaml;View\MainView\MainWindow.xaml;View\MainView\MyPurposeView\AddPurposeWindow.xaml;View\MainView\MyPurposeView\AllPurposesControl.xaml;View\MainView\MyPurposeView\PurposeInfoControl.xaml;View\MainView\ParserView\controls\NumericUpDown.xaml;View\MainView\ParserView\controls\PageHeadersControl.xaml;View\MainView\ParserView\ParserControl.xaml;View\MainView\ProfileEditorView\ChangePasswordControl.xaml;View\MainView\ProfileEditorView\ChangePasswordWindow.xaml;View\MainView\ProfileEditorView\SettingsProfileWindow.xaml;View\MainView\ProfileView\ButtonAddPhotoControl.xaml;View\MainView\ProfileView\MyTaskControl.xaml;View\MainView\ProfileView\ProfileControl.xaml;View\MainView\ProfileView\UserPhotoControl.xaml;View\MainView\Sidebar\SidebarControl.xaml;View\MainView\ToDoListView\CreateMyTaskWindow.xaml;View\MainView\ToDoListView\EditMyTaskWindow.xaml;View\MainView\ToDoListView\MyTaskControl.xaml;View\MainView\ToDoListView\ToDoListControl.xaml;View\RegistrationView\FirstPageRegistration.xaml;View\RegistrationView\RegistrationWindow.xaml;View\RegistrationView\SecondPageRegistration.xaml;
 
-False
+True
 
