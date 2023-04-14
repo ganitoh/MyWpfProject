@@ -11,6 +11,8 @@ using MyWpfProject.View.MainView.Sidebar;
 using MyWpfProject.View.AuthorizationView;
 using MyWpfProject.View.MainView.ParserView;
 using MyWpfProject.core.DataBaseWorkers;
+using MyWpfProject.logger;
+using System.Runtime.CompilerServices;
 
 namespace MyWpfProject
 {

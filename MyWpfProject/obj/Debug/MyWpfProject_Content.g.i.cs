@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("config.txt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("log.txt")]
 
 

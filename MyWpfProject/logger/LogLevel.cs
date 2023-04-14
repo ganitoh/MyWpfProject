@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace MyWpfProject.logger
 {
-    internal interface ILogger
+    internal enum LogLevel
     {
+        LogInfo = 1,
+        LogWarning = 2,
+        LogError = 3
     }
 }
