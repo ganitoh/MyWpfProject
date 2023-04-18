@@ -4,9 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Diagnostics;
 
 namespace MyWpfProject.core.DataBaseWorkers
 {
@@ -27,7 +25,7 @@ namespace MyWpfProject.core.DataBaseWorkers
             }
         }
 
-        event Action<object, string> IdNotCorrectError;
+        public event Action<object, string> IdNotCorrectError;
 
         public MyTaskWorkerDB(int userId)
         {

@@ -8,20 +8,20 @@ namespace MyWpfProject.logger
         { 
 
         }
-        public override void Log(string message,LogLevel level, Exception ex = null)
+        public async override void Log(string message,LogLevel level, Exception ex = null)
         {
             string logMessage = CreateLogMessage(message,level,ex);
 
             switch (level)
             {
                 case LogLevel.LogInfo:
-                   writeLog.WriteAsync(logMessage);
+                   await writeLog.WriteAsync(logMessage);
                     break;
                 case LogLevel.LogWarning:
-                    writeLog.WriteAsync(logMessage);
+                   await writeLog.WriteAsync(logMessage);
                     break;
                 case LogLevel.LogError:
-                    writeLog.WriteAsync(logMessage);
+                   await  writeLog.WriteAsync(logMessage);
                     break;
             }
         }

@@ -9,9 +9,7 @@ namespace MyWpfProject.logger
         async public Task WriteAsync(string logMessage)
         {
             using (StreamWriter writer = new StreamWriter(path,true))
-            {
                 await writer.WriteLineAsync(logMessage);
-            }
         }
     }
 }
