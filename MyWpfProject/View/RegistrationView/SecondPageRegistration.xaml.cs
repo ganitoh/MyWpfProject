@@ -1,4 +1,4 @@
-﻿using MyWpfProject.core.model;
+﻿ using MyWpfProject.core.model;
 using MyWpfProject.core.abstraction;
 using MyWpfProject.View.AuthorizationView;
 using System.Windows;

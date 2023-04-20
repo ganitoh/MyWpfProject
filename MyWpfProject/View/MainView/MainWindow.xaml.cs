@@ -35,6 +35,10 @@ namespace MyWpfProject
             mainContetnControll.Content = new ProfileControl(user, myTasks);
             MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
             MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
+
+            IWriteLog writeLog = new WriteLog();
+            BaseLogger<MainWindow> log = new BaseLogger<MainWindow>(writeLog);
+            log.Log("пользователь авторизовался", LogLevel.LogInfo);
         }
 
         private void AddFromDBExisttingPurposes()
