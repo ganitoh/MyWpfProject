@@ -1,6 +1,7 @@
 using AngleSharp.Html.Parser;
 using System;
 using System.CodeDom;
+using System.Collections.Generic;
 
 namespace MyWpfProject.View.MainView.ParserView.core
 {
@@ -40,7 +41,7 @@ namespace MyWpfProject.View.MainView.ParserView.core
 
 		#endregion
 
-		public event Action<object, T> OnNewData;
+		public event Action<object, Dictionary<string,string>> OnNewData;
 		public event Action<object> OnComplited;
 
         public ParserWorker(IParser<T> parser)
@@ -77,7 +78,7 @@ namespace MyWpfProject.View.MainView.ParserView.core
 				var domParser = new HtmlParser();
 				var document = await domParser.ParseDocumentAsync(source);
 
-				var result = parser.Parse(document);
+				var result = parser.ParseUrl(document);
 
 				OnNewData?.Invoke(this, result);
 			}

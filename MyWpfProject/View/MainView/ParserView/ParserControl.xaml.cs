@@ -11,7 +11,7 @@ namespace MyWpfProject.View.MainView.ParserView
     partial class ParserControl : UserControl
     {
         private ParserWorker<string[]> parser;
-        private List<string>[] headersParsesPages;
+        private Dictionary<string,string>[] headersUrl;
         private int pageValue;
         private bool isActiveHeadersSearch = false;
 
@@ -31,9 +31,9 @@ namespace MyWpfProject.View.MainView.ParserView
         private void EndPoint_Handler(string exceptionMessage) => MessageBox.Show(exceptionMessage);
         private void StartPoint_Handler(string exceptionMessage) => MessageBox.Show(exceptionMessage);
 
-        private void ParserOnNewData(object arg1, string[] headers)
+        private void ParserOnNewData(object arg1, Dictionary<string,string> headersUrl)
         {
-            headersParsesPages[pageValue] = headers.ToList(); 
+            this.headersUrl[pageValue] = headersUrl;
             pageValue++;
 
 
@@ -41,7 +41,7 @@ namespace MyWpfProject.View.MainView.ParserView
         private void ParserOnComplited(object obj)
         {
             pageTextBlock.Text = "1";
-            headersParserContentcontroll.Content = new PageHeadersControl(headersParsesPages[0]);
+            headersParserContentcontroll.Content = new PageHeadersControl(headersUrl[0]);
             pageValue = 1;
         }
 
@@ -58,7 +58,7 @@ namespace MyWpfProject.View.MainView.ParserView
         {
             pageValue = 0;
 
-            headersParsesPages = new List<string>[endPoint.Value];
+            headersUrl = new Dictionary<string,string>[endPoint.Value];
 
             parser.ParserSettings = new ParserSettings(startPoint.Value, endPoint.Value);
             parser.Start();
@@ -66,14 +66,14 @@ namespace MyWpfProject.View.MainView.ParserView
 
         private void NextPage(object sender, RoutedEventArgs e)
         {
-            if (pageValue < headersParsesPages.Length && !isActiveHeadersSearch)
+            if (pageValue < headersUrl.Length && !isActiveHeadersSearch)
                 SetNextPage();
         }
 
         private void SetNextPage()
         {
             pageValue++;
-            headersParserContentcontroll.Content = new PageHeadersControl(headersParsesPages[pageValue - 1]);
+            headersParserContentcontroll.Content = new PageHeadersControl(headersUrl[pageValue - 1]);
             pageTextBlock.Text = $"{Convert.ToInt32(pageTextBlock.Text) + 1}";
         }
 
@@ -86,7 +86,7 @@ namespace MyWpfProject.View.MainView.ParserView
         private void SetPreviousPage()
         {
             pageValue--;
-            headersParserContentcontroll.Content = new PageHeadersControl(headersParsesPages[pageValue - 1]);
+            headersParserContentcontroll.Content = new PageHeadersControl(headersUrl[pageValue - 1]);
             pageTextBlock.Text = $"{Convert.ToInt32(pageTextBlock.Text) - 1}";
         }
 
@@ -97,16 +97,16 @@ namespace MyWpfProject.View.MainView.ParserView
             headersParserContentcontroll.Content = new PageHeadersControl(GetFoundHeaders());
         }
 
-        private List<string> GetFoundHeaders()
+        private Dictionary<string,string> GetFoundHeaders()
         {
-            List<string> searchHeaders = new List<string>();
+            Dictionary<string,string> searchHeaders = new Dictionary<string, string>();
 
-            foreach (var pageHeaders in headersParsesPages)
+            foreach (var pageHeaders in headersUrl)
             {
                 foreach (var header in pageHeaders)
                 {
-                    if (IsCheckHeaders(header))
-                        searchHeaders.Add(header);
+                    if (IsCheckHeaders(header.Key))
+                        searchHeaders.Add(header.Key,header.Value);
                 }
             }
 
@@ -131,7 +131,7 @@ namespace MyWpfProject.View.MainView.ParserView
         {
             isActiveHeadersSearch = false;
             pageTextBlock.Text = "1";
-            headersParserContentcontroll.Content = new PageHeadersControl(headersParsesPages[0]);
+            headersParserContentcontroll.Content = new PageHeadersControl(headersUrl[0]);
             pageValue = 1;
         }
     }

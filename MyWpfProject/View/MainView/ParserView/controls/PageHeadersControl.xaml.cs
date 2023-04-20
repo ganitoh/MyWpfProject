@@ -9,17 +9,20 @@ namespace MyWpfProject.View.MainView.ParserView.controls
 {
     partial class PageHeadersControl : UserControl
     {
-        List<string> headers = new List<string>();
-        public PageHeadersControl(List<string> headers)
+        Dictionary<string, string> headersUrl = new Dictionary<string, string>();
+        public PageHeadersControl(Dictionary<string,string> headersUrl)
         {
-            this.headers = headers.ToList<String>();
             InitializeComponent();
 
-            foreach (string header in this.headers)
+            foreach (var header in headersUrl)
             {
                 Button headerButton = new Button();
-                headerButton.Content = header;
+                headerButton.Content = header.Key;
                 headerButton.Margin = new Thickness(5);
+                headerButton.Click += (e,o) =>
+                {
+                    Process.Start($"{header.Value}");
+                };
 
                 headersPanel.Children.Add(headerButton);
             }
