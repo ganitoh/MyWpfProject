@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data;
-using System.Windows;
+
 
 namespace MyWpfProject.core.DataBaseWorkers
 {
@@ -129,7 +129,7 @@ namespace MyWpfProject.core.DataBaseWorkers
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                throw new Exception();
             }
             finally
             {

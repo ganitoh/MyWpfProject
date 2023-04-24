@@ -3,7 +3,7 @@ using System.IO;
 
 namespace MyWpfProject.logger
 {
-    internal class WriteLog : IWriteLog
+    internal class WriteToFileLog : IWriteLog
     {
         private const string path = @"C:\Users\vadik\OneDrive\Рабочий стол\log.txt";
         async public Task WriteAsync(string logMessage)

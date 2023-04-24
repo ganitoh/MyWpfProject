@@ -10,14 +10,14 @@ namespace MyWpfProject.View.MainView.ParserView
 {
     partial class ParserControl : UserControl
     {
-        private ParserWorker<string[]> parser;
+        private ParserWorker<Dictionary<string, string>> parser;
         private Dictionary<string,string>[] headersUrl;
         private int pageValue;
         private bool isActiveHeadersSearch = false;
 
         public ParserControl()
         {
-            parser = new ParserWorker<string[]>(new HabraParser());
+            parser = new ParserWorker<Dictionary<string, string>>(new HabraParser());
             
             InitializeComponent();
 

@@ -36,7 +36,7 @@ namespace MyWpfProject
             MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
             MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
 
-            IWriteLog writeLog = new WriteLog();
+            IWriteLog writeLog = new WriteToFileLog();
             BaseLogger<MainWindow> log = new BaseLogger<MainWindow>(writeLog);
             log.Log("пользователь авторизовался", LogLevel.LogInfo);
         }

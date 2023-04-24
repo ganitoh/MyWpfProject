@@ -7,8 +7,6 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using MyWpfProject.View.RegistrationView;
 using MyWpfProject.core.DataBaseWorkers;
-using MyWpfProject.logger;
-
 
 namespace MyWpfProject.View.AuthorizationView
 {

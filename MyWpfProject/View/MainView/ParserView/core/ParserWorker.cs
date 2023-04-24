@@ -1,7 +1,5 @@
 using AngleSharp.Html.Parser;
 using System;
-using System.CodeDom;
-using System.Collections.Generic;
 
 namespace MyWpfProject.View.MainView.ParserView.core
 {
@@ -41,7 +39,7 @@ namespace MyWpfProject.View.MainView.ParserView.core
 
 		#endregion
 
-		public event Action<object, Dictionary<string,string>> OnNewData;
+		public event Action<object, T> OnNewData;
 		public event Action<object> OnComplited;
 
         public ParserWorker(IParser<T> parser)

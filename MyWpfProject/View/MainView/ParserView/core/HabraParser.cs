@@ -4,22 +4,8 @@ using System.Linq;
 
 namespace MyWpfProject.View.MainView.ParserView.core
 {
-    class HabraParser : IParser<string[]>
+    class HabraParser : IParser<Dictionary<string,string>>
     {
-        public string[] Parse(IHtmlDocument document)
-        {
-            var list = new List<string>();
-            var items = document.QuerySelectorAll("a").Where(item => item.ClassName != null && item.ClassName.Contains("tm-title__link"));
-
-            foreach (var item in items)
-            {
-                list.Add(item.TextContent);
-            }
-            return list.ToArray();
-
-            
-        }
-
         public Dictionary<string,string> ParseUrl(IHtmlDocument document)
         {
             var dictionary = new Dictionary<string,string>();

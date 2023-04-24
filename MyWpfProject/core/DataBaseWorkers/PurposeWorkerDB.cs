@@ -1,13 +1,9 @@
-﻿using AngleSharp.Attributes;
-using MyWpfProject.core.abstraction;
+﻿using MyWpfProject.core.abstraction;
 using MyWpfProject.core.model;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MyWpfProject.core.DataBaseWorkers
 {
